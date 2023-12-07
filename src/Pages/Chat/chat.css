@@ -1,0 +1,155 @@
+
+
+/* Start Chat  */
+
+.chat-main{
+    display: flex;
+    padding: 30px 20px
+
+}
+
+.chat-main .chat-list{
+    width: 25%;
+    border-right: 1px solid #EEE;
+    padding-right: 6px;
+    height: calc(100vh - 120px);
+    overflow-y:scroll ;
+
+}
+
+.chat-main .chat-list .chat-title{
+    font-size: 30px ;
+    margin-bottom: 20px;
+}
+
+
+
+.chat-main .chat-list  .search {
+    background-color:#f0f2f5 ;
+    display: flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 20px;
+}
+.chat-main .chat-list  .search input{
+    border: none;
+    background-color: transparent;
+    margin-left: 5px;
+}
+
+.chat-main .chat-list  .search span{
+    color: #65676b;
+    font-weight: 400;
+}
+
+
+
+.chat-main .chat-list  .search input:focus{
+    outline: none;
+}
+
+.all-chats{
+    padding-top:20px ;
+}
+
+/* End Chat  */
+
+
+/* Start Card  */
+
+.contact-card{
+    display: flex;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:4px 10px ;
+    transition: .3s;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact-card:hover{
+    background-color: #f0f2f5;
+}
+
+.contact-card .profile {
+    display: flex;
+    align-items: center;
+}
+
+.contact-card .profile h5{
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.contact-card .profile .logo img{
+    width: 60px ;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.contact-card .ball{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #0075FF;
+}
+
+/* End Card  */
+
+
+
+
+/* Start Handle Scroll */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 20px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+
+
+  /* End Handle Scroll */
+
+
+
+  /* Start Default */
+
+    .default-chat{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        padding-top: 100px;
+    }
+
+    .default-chat img{
+        width: 300px;
+        height: 300px;
+    }
+
+    .default-chat h6{
+        text-align: center;
+        font-size: 22px;
+    }
+
+  /* End Default */

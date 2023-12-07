@@ -1,0 +1,152 @@
+
+
+/* Start SideBar */
+
+aside{
+    width: 19%;
+    background-color:var(--sidebar-background-color) ;
+    height: 100vh;
+}
+
+aside .side-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 2px solid #eaeef3;
+    padding: 20px  0px;
+    padding-right:  10px;
+}
+
+aside .side-header .logo img{
+    width:220px;
+    max-width: 100%;
+}
+
+aside .side-header .menu{
+    cursor: pointer;
+}
+aside .side-header .menu span{
+    color: #a4aec0;
+    
+}
+
+aside ul{
+    margin-top:17px;
+    list-style: none;
+    padding-left:0px !important ;
+}
+
+aside ul li{
+    width: 90%;
+    margin: 0 auto;
+    /* padding: 10px 6px; */
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    transition: var(--main-transiton);
+
+}
+
+aside ul li.active , aside ul li:hover{
+    background-color: #e8edff;
+}
+
+aside ul li a{
+    text-decoration: none;
+    display: flex !important;
+    align-items: center !important;
+    display: block;
+    width: 100%;
+    padding: 10px 6px;
+    border-radius: 4px;
+    color: var(--text-color);
+}
+
+aside ul li a.active{
+    background-color: #e8edff;
+    color: #5077ff;
+    display: flex;
+    align-items: center;
+
+}
+
+
+/* aside ul li.active a{
+color: #5077ff;
+background-color: #e8edff;
+
+} */
+
+aside ul li a span{
+    margin-right: 10px;
+    opacity: .7;
+}
+
+
+/* End SideBar */
+
+
+
+
+/* Start Nav  */
+
+nav{
+    display: flex;
+    background-color: #ffffff;
+    border: 2px solid #eaeef3 ;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+nav .search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    border: 1px solid  #dde2e8;
+    padding: 7px 10px;
+    border-radius:5px ;
+}
+
+nav .search input{
+    border: none;
+    width: 100%;
+    caret-color: #93a0b3;
+
+}
+
+nav .search  span{
+    color: #93a0b3;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+nav .search input::placeholder{
+    color: #93a0b3;
+}
+
+
+nav .search input:focus{
+    outline: none;
+}
+
+nav .btn-container button{
+    background: #5077ff;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--main-transiton);
+}
+
+nav .btn-container button:hover{
+    background: #6e8dfc;
+}
+
+
+/* End Nav  */

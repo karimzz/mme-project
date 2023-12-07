@@ -1,0 +1,44 @@
+.my-3{
+    padding-top: 50px;
+}
+
+.my-3 p{
+    text-align: center;
+    font-size: 46px;
+    line-height: 1px;
+    padding: 40px;
+
+}
+.my-3 .formInput{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+} 
+.my-3 .label{
+    font-size: 18px;
+    letter-spacing: 3px;
+    
+    
+}
+.my-3 input{
+    width: 35%;
+    height: 45px;
+}
+.my-3 h6{
+    text-decoration: underline;
+    margin-left: 25%;
+    padding: 10px;
+    cursor: pointer;
+}
+.my-3 button{
+    color: white;
+    background-color: black;
+    width: 35%;
+    height: 50px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}

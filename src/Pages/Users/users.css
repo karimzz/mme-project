@@ -1,0 +1,122 @@
+.users{
+    padding: 40px 20px;
+    overflow-y: scroll;
+    height: calc(100vh - 60px);
+}
+
+.users .page-title{
+    padding-top: 40px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.users .page-title h4{
+    font-size: 55px;
+    font-weight:100 ;
+}
+
+.user .user-list{
+    display: flex ;
+    flex-wrap: wrap ;
+    padding-top: 100px;
+    margin-top: 100px;
+}
+
+
+/* Start User Component */
+ .user-card{
+    width: 270px;
+    background-color: #f4f2f2;
+    margin-bottom: 23px;
+    padding-bottom: 20px ;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+
+@media(max-width:1110px)
+{
+    .user-card{
+        width: 245px;
+    }
+}
+
+.user-card .logo{
+    width: 100%;
+    position: relative;
+    background-color: #0075FF;
+    height: 110px;
+    border-radius: 6px;
+}
+
+.user-card .logo img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    right: 50%;
+    bottom: -25%;
+    transform: translateX(50%);
+}
+
+.user-card .user-info{
+    margin-top: 45px;
+    padding: 0px 20px;
+}
+
+.user-card .user-info .username{
+    font-size: 25px;
+    text-align: center;
+}
+
+.user-card .user-info p {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+} 
+
+.user-card .user-info p span{
+    margin-right: 10px;
+}
+
+.user-card .user-info .btn-group{
+    margin-top: 26px;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.user-card .user-info .btn-group button {
+    border: none;
+    padding: 7px 11px;
+    background-color: red;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin-right: 5px;
+    color: white;
+    transition: var(--main-transiton);
+    cursor: pointer;
+}
+
+
+.user-card .user-info .btn-group button:hover{
+    opacity: .7;
+}
+
+.user-card .user-info .btn-group button span{
+    font-size: 16px;
+}
+
+.user-card .user-info .btn-group button.btn-e{
+background-color: #0075FF;
+}
+
+.user-card .user-info .btn-group button:last-child{
+    background-color: rgb(29, 28, 28);
+}
+
+/* End User Component */

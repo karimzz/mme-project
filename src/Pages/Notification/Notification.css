@@ -1,0 +1,96 @@
+.not-page{
+    padding: 20px;
+    
+}
+
+.not-page .not-title{
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+.not-page .not-list {
+    margin-top: 35px;
+    height: calc(100vh - 202px);
+    overflow-y: scroll;
+}
+
+
+.not-card{
+    width: 600px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    transition: var(--main-transiton);
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0px 15px;
+}
+
+.not-card:hover{
+    background-color: #EEE;
+}
+
+.not-card .not-im{
+    margin-right: 20px;
+}
+
+.not-card .not-im img{
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+}
+
+@media(max-width:600px)
+{
+    .not-card .not-im img{
+        width: 55px;
+        height: 55px;
+    }
+}
+
+.not-card .des p {
+    font-size: 17px;
+    color: #a8a9ab;
+}
+
+.not-card .des p span{
+    font-weight: bold;
+}
+
+.not-card .des span.date{
+    padding-top: 10px;
+    color: #a8a9ab;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.not-card .des p span.open{
+    color: black;
+}
+
+.not-card .des span.date-open{
+    color: #0075FF;
+    font-weight: bold;
+}
+
+.not-page .not-list::-webkit-scrollbar {
+    width: 0px;
+
+  }
+  
+  /* Track */
+  .not-page .not-list::-webkit-scrollbar-track {
+    background: transparent;
+
+  }
+  
+  /* Handle */
+  .not-page .not-list::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  
+  /* Handle on hover */
+  .not-page .not-list::-webkit-scrollbar-thumb:hover {
+    background:transparent;
+  }

@@ -1,0 +1,142 @@
+/* Start Request  */
+
+.main-request{
+    padding: 20px;
+    overflow-y: scroll;
+    height: calc(100vh - 120px);
+}
+
+.main-request .request-title h2{
+    font-size: 28px ;
+    margin: 30px 0px;
+}
+
+.main-request .request-type{
+    display: flex;
+    border-bottom: 1px solid black;
+    padding-bottom:5x ;
+}
+
+.main-request .request-type a {
+    text-decoration: none;
+    color: black;
+    
+    color: black;
+    font-weight: 400;
+    padding: 8px 13px;
+    margin-right: 5px;
+    transition: .4s;
+    border-radius: 6px;
+    position: relative;
+}
+
+.main-request .request-type a.active{
+    color: #0075FF;
+    transition: .3s;
+}
+
+.main-request .request-type a.active::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px ;
+    background-color: #0075FF;
+    bottom: -2%;
+    left: 0;
+}
+
+
+
+/* End Request  */
+
+
+
+/* Start Card  */
+
+.main-request .request-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 9px 3px;
+    padding: 6px;
+}
+
+.main-request .request-card .left{display: flex;}
+
+
+.main-request .request-card .logo img{
+    width: 90px;
+    border-radius: 50%;
+    height: 90px;
+    object-fit: cover;
+}
+
+.main-request .request-card .des {margin-left: 10px;}
+
+.main-request .request-card .des .title{
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    color: #5e6978;
+    margin-bottom: 2px;
+}
+
+.main-request .request-card .des p.service{
+    font-size: 15px;
+    color: #5e6978;
+    font-weight: 300;
+    margin-bottom: 0px;
+}
+
+.main-request .request-card .des p.date{
+    margin: 0;
+    margin-bottom: 0px;
+    color: #5e6978;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.main-request .request-card .des p.price{
+    color: #5e6978;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.main-request .request-card  .btn-group .btn-yes{
+    background-color: rgb(47, 199, 47);
+}
+.main-request .request-card  .btn-group button{
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.main-request .request-card  .btn-group button:hover{
+    opacity: .8;
+}
+
+.main-request .request-card  .btn-group .btn-no{
+    background-color: rgb(224, 68, 68);
+}
+
+
+.status-recieved{
+    color: #ffdc70;
+    background-color: #fff9e4;
+    border-radius: 25px;
+    font-size: 14px;
+    padding: 5px 8px;
+}
+
+.status-cancel{
+
+    color: #ea5b5b;
+    background-color: #ffecee;
+    border-radius: 25px;
+    font-size: 14px;
+    padding: 5px 8px;
+}
+
+
+
+/* End Card  */
