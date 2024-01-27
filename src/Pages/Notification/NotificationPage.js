@@ -3,8 +3,21 @@ import "./Notification.css" ;
 import NotificationComponent from '../../Components/Notification/NotificationComponent';
 import user  from "./../../Image/user.png" ; 
 import { Fade } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const NotificationPage = () => {
+
+
+  // For Handlle Route
+  const navigate = useNavigate() 
+
+  // For Access Slice 
+  const {auth } = useSelector(state => state.AuthSlice) ; 
+  console.log(auth) ; 
+  if(auth == null){
+    navigate("/login")
+  }
   return (
     
     <div className='not-page'>

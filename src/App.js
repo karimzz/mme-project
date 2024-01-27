@@ -19,12 +19,17 @@ import RequestPage from './Pages/Request/RequestPage';
 import RequestProcessList from './Components/Request/RequestProcessList';
 import RequestCanceledList from './Components/Request/RequestCanceledList';
 import RequestRecievedList from './Components/Request/RequestRecievedList';
+import { useSelector } from 'react-redux';
+import ForgetPasswordSendCode from './Components/ForgetPassword/ForgetPasswordSendCode';
+import VerificationPassword from './Components/ForgetPassword/VerificationPassword';
 
 
 function App() {
 
-  const Auth = true
-   ; 
+  const Auth = useSelector(state => state.AuthSlice.auth) ;
+
+
+
 
 
   return (
@@ -42,7 +47,12 @@ function App() {
               <Route path='/' element={<LoginPage />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/users' element={<AllUsersPage />} />
-
+              {/* Forget Password */}
+              <Route path='/forgetpassword'>
+                <Route index element={<ForgetPasswordSendCode />} />
+                <Route path='verification' element={<VerificationPassword />} />
+              </Route>
+              
               {/* Product  */}
               <Route path='/product'  element={<Products />} />
               <Route path='/product/add' element={<AddProduct />} />

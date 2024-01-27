@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import imgOffer from '../../Image/background.jpg';
@@ -10,35 +9,8 @@ import imgOffer from '../../Image/background.jpg';
 function Products() {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    getAllProduct();
-  }, []);
 
-  const getAllProduct = () => {
-    fetch("http://localhost:4000/product")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data);
-      });
-  }
 
-  const deleteProduct = (product) => {
-    Swal.fire({
-      title: `Are You Sure ${product.title}?`,
-      showCancelButton: true,
-    }).then((data) => {
-      if (data.isConfirmed) {
-        fetch(`http://localhost:4000/product/${product.id}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then(() => {
-            getAllProduct();
-          });
-      }
-    });
-  };
 
   return (
     <div style={{overflowX : "hidden" , "overflowY" : "scroll" , height : "calc( 100vh -  60px)"}}>
@@ -74,7 +46,7 @@ function Products() {
                 <Card.Title>{product.title}</Card.Title>
                 <h4>{product.price}$</h4>
                 <Link to={'/product/edite'}><Button style={{ color: "white", background: "black", margin: "2px",width:"75px",border:"1px solid black" }} className='btn-primary' >Edit</Button></Link>
-                <Button style={{ color: "white", background: "black", margin: "2px",width:"75px",border:"1px solid black" }} onClick={() => deleteProduct(product)} className='btn-danger'>Delete</Button>
+                <Button style={{ color: "white", background: "black", margin: "2px",width:"75px",border:"1px solid black" }}  className='btn-danger'>Delete</Button>
                 <Button style={{ color: "white", background: "black", margin: "2px",width:"75px",border:"1px solid black" }} >Hide</Button>
               </Card.Body>
             </Card>

@@ -24,21 +24,31 @@
     
 }
 .my-3 input{
-    width: 35%;
+    width: 500px !important;
     height: 45px;
+    max-width: 100%;
+    padding: 0px 5px;
+    border-radius: 1px;
 }
-.my-3 h6{
+.my-3 a{
     text-decoration: underline;
-    margin-left: 25%;
     padding: 10px;
+    color: black;
     cursor: pointer;
+    display: block;
+    
 }
-.my-3 button{
+.my-3 .s-btn{
     color: white;
     background-color: black;
     width: 35%;
     height: 50px;
+    transition: var(--main-transiton);
     padding: 10px;
     margin: 10px;
     cursor: pointer;
+}
+
+.my-3 .s-btn:hover{
+    background-color: rgba(0, 0, 0, 0.806);
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import './../../css/LoginPage.css'
 
@@ -12,23 +11,12 @@ function AddProduct() {
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState(0);
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    axios.post("http://localhost:4000/product",{
-      title,
-      price,
-      description,
-      image
-
-    }).then((data) => console.log(data));
-    navigate("/products");
-  
-  };
+ 
 
   return (
     <Container style={{ width: '100%', margin: 'auto' , overflow : "hidden" }} className='my-3'>
       <p>INSERT PRODUCT</p>
-      <Form onSubmit={formSubmit} className='formInput'>
+      <Form  className='formInput'>
         <Form.Label  className='label'>PRODUCT NAME</Form.Label>
         <input size='lg' type='text' placeholder='Product Title' onChange={(e) => setTitle(e.target.value)} required to="inputName"/>
         <br />
