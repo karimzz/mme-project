@@ -9,14 +9,17 @@ const VerificationPassword = () => {
     const cocdRef = useRef(null) ; 
 
 //  For Get Email
-const data = useSelector(state => state.ForgetPasswordSlice)
-console.log(data)
+const state = useSelector(state => state.ForgetPasswordSlice) ;
+
+console.log("Here Verification and here value of email ")
+
+console.log(state) ;
 
 // For Dispatch Action
 const dispatch = useDispatch() ;
 
 const verifyHandeler = ()=>{
-    dispatch(verificationHandler({email : "asdsadsa" , code : cocdRef.current.value}))
+    dispatch(verificationHandler( {email : state.email  , otp : cocdRef.current.value}) )
 }
     
   return (

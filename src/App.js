@@ -29,9 +29,6 @@ function App() {
   const Auth = useSelector(state => state.AuthSlice.auth) ;
 
 
-
-
-
   return (
     <div>
     <BrowserRouter>
@@ -44,9 +41,9 @@ function App() {
           
           {/* Route Here  */}
             <Routes>
-              <Route path='/' element={<LoginPage />} />
+              <Route path='/' element={<h2>Your Are Default</h2>} />
               <Route path='/login' element={<LoginPage />} />
-              <Route path='/users' element={<AllUsersPage />} />
+              <Route path='/users' element={ Auth ? <AllUsersPage />  : <LoginPage />  } />
               {/* Forget Password */}
               <Route path='/forgetpassword'>
                 <Route index element={<ForgetPasswordSendCode />} />
@@ -54,29 +51,29 @@ function App() {
               </Route>
               
               {/* Product  */}
-              <Route path='/product'  element={<Products />} />
-              <Route path='/product/add' element={<AddProduct />} />
-              <Route path='/product/edite' element={<EditProduct />} />
+              <Route path='/product'  element={ Auth ? <Products /> : <LoginPage /> } />
+              <Route path='/product/add' element={Auth ? <AddProduct /> : <LoginPage /> } />
+              <Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } />
 
-              <Route path='/notification' element={<NotificationPage />} />
-              <Route path='/message' element={<ChatPage />} />
+              <Route path='/notification' element={ Auth ? <NotificationPage /> : <LoginPage /> } />
+              <Route path='/message' element={ Auth ? <ChatPage /> : <LoginPage /> } />
 
               {/* Services  */}
-              <Route path='/service' element={<Service/>}/>
-              <Route path='/srvice/edit' element={<EditService/>}/>
-              <Route path='/service/add' element={<AddService/>}/>
+              <Route path='/service' element={ Auth ? <Service/> : <LoginPage />  }/>
+              <Route path='/srvice/edit' element={ Auth  ? <EditService/> : <LoginPage /> }/>
+              <Route path='/service/add' element={  Auth  ? <AddService/> : <LoginPage /> }/>
 
               {/*  Offer  */}
-              <Route path='/offer' element={ <Offer /> } />
-              <Route path='/offer/add' element={ <AddOffer /> } />
-              <Route path='/offer/edit' element={ <EditOffer /> } />
+              <Route path='/offer' element={  Auth  ? <Offer /> : <LoginPage />   } />
+              <Route path='/offer/add' element={   Auth  ? <AddOffer /> : <LoginPage /> } />
+              <Route path='/offer/edit' element={  Auth  ? <EditOffer /> : <LoginPage /> } />
 
               {/* Request  */}
-              <Route path='/request' element={<RequestPage />}>
-                  <Route index  element={<RequestProcessList />}/>
-                  <Route path='process'  element={<RequestProcessList />} />
-                  <Route path="canceled" element={<RequestCanceledList />} />
-                  <Route path='recieved' element={<RequestRecievedList />} />
+              <Route path='/request' element={ Auth  ? <RequestPage /> : <LoginPage /> }>
+                  <Route index  element={ Auth  ? <RequestProcessList /> : <LoginPage /> }  />
+                  <Route path='process'  element={ Auth  ? <RequestProcessList /> : <LoginPage /> } />
+                  <Route path="canceled" element={ Auth  ? <RequestCanceledList /> : <LoginPage /> } />
+                  <Route path='recieved' element={ Auth  ? <RequestRecievedList /> : <LoginPage /> } />
               </Route>
             </Routes>
         </div>

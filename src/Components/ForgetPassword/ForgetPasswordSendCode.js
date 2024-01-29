@@ -3,7 +3,7 @@ import "./../../Pages/ForgetPassword/fortgetpassword.css"
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
-import { addEmail , sendEmailHandler } from '../../RTK/Slice/ForgetPasswordSlice'
+import {   sendEmailHandler } from '../../RTK/Slice/ForgetPasswordSlice'
 
 
 const ForgetPasswordSendCode = () => {
@@ -20,8 +20,8 @@ const ForgetPasswordSendCode = () => {
 
     // Save Email 
     const saveEmailHandler = ()=>{
-        dispatch(sendEmailHandler(EmailRef.current.value))
-        // navigate("verification" )
+        dispatch(sendEmailHandler({email : EmailRef.current.value}))
+        navigate("verification" )
     }
 
   return (

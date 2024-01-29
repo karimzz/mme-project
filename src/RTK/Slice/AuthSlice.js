@@ -19,8 +19,20 @@ export const loginHandler = createAsyncThunk("auth/loginhandeler" , async (args 
 })
 
 
+// Logout Function 
+export const logoutHandler = createAsyncThunk("auth/logout" , async (args , thunkAPI )=>{
+    const response = await axios.get("http://127.0.0.1:8000/api/logout" , {
+        email : args.email ,
+        headers : {
+            Token : args.Token
+        }
+    }  )
+    console.log(response) ;
+})
+
+
  const initialState = {
-    auth : null,
+    auth : localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : null,
     error : false , 
     success : false , 
     loadding : false
@@ -33,6 +45,7 @@ const AuthSlice = createSlice({
 
     } , extraReducers : {
         [loginHandler.fulfilled] : (state , action)=>{
+            localStorage.setItem("auth" , JSON.stringify(action.payload))
             state.auth = action.payload ; 
             state.error = false
             state.success = true
@@ -48,6 +61,16 @@ const AuthSlice = createSlice({
             state.error = true ; 
             state.success = false ; 
             state.loadding = false
+        } ,
+        // Logout
+        [logoutHandler.fulfilled] : (state , action)=>{
+            console.log("Fuilfled")
+        } , 
+        [logoutHandler.pending] : (state , action) =>{
+
+        } , 
+        [logoutHandler.rejected] : (state , action) =>{
+            console.log("Rejeceted")
         }
     }
 })

@@ -4,27 +4,31 @@ import axios from "axios";
 
 
 export const sendEmailHandler = createAsyncThunk("forgetpassword/sendEmailHandler" , async (args )=>{
-    console.log(args)
+
     const response = await axios.post("http://127.0.0.1:8000/api/password/forget-password" , {
         email : args.email
     })
-    console.log(response.data)
+    return {status : response.data.success , email : args.email}
 })
 
 export const verificationHandler =  createAsyncThunk("forgetpassword/verificationHandler" , async (args , thunkAPI)=>{
+    console.log("We Are In Verification Handeler")
     console.log(args)
-    const response = await axios.post("http://127.0.0.1:8000/api/password/verification-code" , {
+
+        const response = await axios.post("http://127.0.0.1:8000/api/password/verification-code" , {
         email :args.email ,
-        otp : args.code
+        otp : args.otp
     })
 
-    console.log(response.data) ;
+    console.log(response) ;
+
 })
 
 
 const initialState = {
     email : null , 
-    code : null
+    code : null ,
+    status : false
 }
 
 const ForgetPasswordSlice = createSlice({
@@ -35,7 +39,11 @@ const ForgetPasswordSlice = createSlice({
     } ,extraReducers : {
         // For Send Email
         [sendEmailHandler.fulfilled] : (state ,action)=>{
-            console.log("Fuilfiled")
+            
+            state.status = action.payload.success ; 
+            state.email = action.payload.email
+
+            console.log(state.email)
         } , 
         [sendEmailHandler.pending] : (state , action)=>{
             console.log("penddidng")
@@ -46,12 +54,11 @@ const ForgetPasswordSlice = createSlice({
         } , 
         // For Verifiy Email
         [verificationHandler.fulfilled] : (state , action)=>{
-            console.log("Fuilfiled")
+            console.log("Fulfiled")
         } ,
         [verificationHandler.pending] : (state , action)=>{
             console.log("pendding")
         } ,
-        
         [verificationHandler.rejected] : (state , action)=>{
             console.log("Rejected")
         } ,
