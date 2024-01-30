@@ -10,18 +10,6 @@ import Row from 'react-bootstrap/Row';
 const Offer = () => {
     const [offers, setOffers] = useState([]);
 
-  useEffect(() => {
-    getAllOffers();
-  }, []);
-
-  const getAllOffers = () => {
-    fetch("http://localhost:4000/offer")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setOffers(data);
-      });
-  }
 
   return (
     <div>

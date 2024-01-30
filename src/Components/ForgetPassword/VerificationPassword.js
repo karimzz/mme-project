@@ -2,8 +2,13 @@ import React, { useRef } from 'react'
 import { ToastContainer } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { verificationHandler } from '../../RTK/Slice/ForgetPasswordSlice';
+import { useNavigate } from 'react-router-dom';
 
 const VerificationPassword = () => {
+
+
+  // For Change Route
+  const navigate = useNavigate() ;
 
 //  For Access Code Input
     const cocdRef = useRef(null) ; 
@@ -20,6 +25,10 @@ const dispatch = useDispatch() ;
 
 const verifyHandeler = ()=>{
     dispatch(verificationHandler( {email : state.email  , otp : cocdRef.current.value}) )
+}
+
+if(state.status){
+  navigate("/forgetpassword/re-newpass")
 }
     
   return (

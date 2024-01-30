@@ -38,7 +38,7 @@ const LoginPage = () => {
   }
 
   return (
-    <Container className='my-3'>
+    <Container className='my-3d'>
     <ToastContainer
     autoClose={1500}
 

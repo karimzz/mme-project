@@ -3,6 +3,20 @@ import axios from "axios";
 
 
 
+// For Create A new Password 
+export const restPassword = createAsyncThunk("forgetpassword/restPassword" , async (args , thunkAPI)=>{
+    const response = axios.post("http://127.0.0.1:8000/api/password/reset-password" , {
+        email : args.email , 
+        password :args.password 
+    } ,{
+        headers : {
+            Authorization : `Bearer ${args.token}`
+        }
+    })
+    console.log(response.data)
+})
+
+// For Send Email To User
 export const sendEmailHandler = createAsyncThunk("forgetpassword/sendEmailHandler" , async (args )=>{
 
     const response = await axios.post("http://127.0.0.1:8000/api/password/forget-password" , {
@@ -11,16 +25,14 @@ export const sendEmailHandler = createAsyncThunk("forgetpassword/sendEmailHandle
     return {status : response.data.success , email : args.email}
 })
 
+// For Send Code 
 export const verificationHandler =  createAsyncThunk("forgetpassword/verificationHandler" , async (args , thunkAPI)=>{
-    console.log("We Are In Verification Handeler")
-    console.log(args)
-
         const response = await axios.post("http://127.0.0.1:8000/api/password/verification-code" , {
         email :args.email ,
         otp : args.otp
     })
 
-    console.log(response) ;
+    return response.data
 
 })
 
@@ -28,7 +40,9 @@ export const verificationHandler =  createAsyncThunk("forgetpassword/verificatio
 const initialState = {
     email : null , 
     code : null ,
-    status : false
+    status : false ,
+    token : null ,
+    changed : false
 }
 
 const ForgetPasswordSlice = createSlice({
@@ -39,10 +53,8 @@ const ForgetPasswordSlice = createSlice({
     } ,extraReducers : {
         // For Send Email
         [sendEmailHandler.fulfilled] : (state ,action)=>{
-            
             state.status = action.payload.success ; 
             state.email = action.payload.email
-
             console.log(state.email)
         } , 
         [sendEmailHandler.pending] : (state , action)=>{
@@ -54,6 +66,8 @@ const ForgetPasswordSlice = createSlice({
         } , 
         // For Verifiy Email
         [verificationHandler.fulfilled] : (state , action)=>{
+            state.token = action.payload.token
+            state.status = true ; 
             console.log("Fulfiled")
         } ,
         [verificationHandler.pending] : (state , action)=>{
@@ -62,6 +76,15 @@ const ForgetPasswordSlice = createSlice({
         [verificationHandler.rejected] : (state , action)=>{
             console.log("Rejected")
         } ,
+        [restPassword.fulfilled ] : (state , action)=>{
+            state.changed = true ;
+        },
+        [restPassword.pending ] : (state , action)=>{
+
+        },
+        [restPassword.rejected ] : (state , action)=>{
+
+        },
 
     }
 })

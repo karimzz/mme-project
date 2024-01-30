@@ -12,23 +12,12 @@ function AddOffer() {
   const [previousPrice, setpreviousPrice] = useState(0);
   const [image, setImage] = useState(0);
 
-  const formSubmit = (e) => {
-    e.preventDefault();
-    axios.post("http://localhost:4000/offer",{
-      name,
-      currentPrice,
-      previousPrice,
-      image
-
-    }).then((data) => console.log(data));
-    navigate("/offers");
   
-  };
 
   return (
     <Container style={{ width: '100%', margin: 'auto' }} className='my-3'>
       <p>INSERT OFFER</p>
-      <Form onSubmit={formSubmit} className='formInput'>
+      <Form  className='formInput'>
         <Form.Label  className='label'>NAME</Form.Label>
         <input size='lg' type='text' placeholder='Title' onChange={(e) => setName(e.target.value)} required to="inputName"/>
         <br />

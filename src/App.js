@@ -22,17 +22,20 @@ import RequestRecievedList from './Components/Request/RequestRecievedList';
 import { useSelector } from 'react-redux';
 import ForgetPasswordSendCode from './Components/ForgetPassword/ForgetPasswordSendCode';
 import VerificationPassword from './Components/ForgetPassword/VerificationPassword';
+import CreateNewPassword from './Components/ForgetPassword/CreateNewPassword';
+import ProductPage from './Pages/Product/ProductPage';
+import SectionPage from './Pages/Section/SectionPage';
 
 
 function App() {
 
+  // For Access Data in state
   const Auth = useSelector(state => state.AuthSlice.auth) ;
 
 
   return (
     <div>
     <BrowserRouter>
-
       <main>
         {Auth ? <SideBar /> : ""}
         
@@ -48,10 +51,11 @@ function App() {
               <Route path='/forgetpassword'>
                 <Route index element={<ForgetPasswordSendCode />} />
                 <Route path='verification' element={<VerificationPassword />} />
+                <Route path='re-newpass' element={<CreateNewPassword />} />
               </Route>
               
               {/* Product  */}
-              <Route path='/product'  element={ Auth ? <Products /> : <LoginPage /> } />
+              <Route path='/product'  element={ Auth ? <ProductPage /> : <LoginPage /> } />
               <Route path='/product/add' element={Auth ? <AddProduct /> : <LoginPage /> } />
               <Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } />
 
@@ -67,6 +71,11 @@ function App() {
               <Route path='/offer' element={  Auth  ? <Offer /> : <LoginPage />   } />
               <Route path='/offer/add' element={   Auth  ? <AddOffer /> : <LoginPage /> } />
               <Route path='/offer/edit' element={  Auth  ? <EditOffer /> : <LoginPage /> } />
+
+              {/* Section */}
+              <Route path='/section' element={Auth ? <SectionPage /> : <LoginPage />} >
+              
+              </Route>
 
               {/* Request  */}
               <Route path='/request' element={ Auth  ? <RequestPage /> : <LoginPage /> }>

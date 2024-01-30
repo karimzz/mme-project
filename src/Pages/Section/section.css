@@ -1,0 +1,51 @@
+
+.section-page{
+    padding-top: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.section-page h2{
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.section-page .all-section{
+    padding-top: 40px;
+}
+
+.section-page .all-section .section-card{
+    background-color: #dfa4f843;
+    border-left: 5px solid  #6200ee;
+    margin-bottom: 10px;
+    padding: 14px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-page .all-section .section-card .k-btn-group button{
+border: none;
+color: white;
+margin-left: 10px;
+padding: 4px 17px;
+border-radius: 6px;
+font-size: 13px;
+transition: .3s;
+font-weight: 600;
+}
+.section-page .all-section .section-card .k-btn-group button:first-child{
+    background-color: rgb(252, 211, 4);
+}
+
+.section-page .all-section .section-card .k-btn-group button:hover{
+    opacity: .7;
+}
+
+.section-page .all-section .section-card .k-btn-group .del-btn{
+    background-color: red;
+}
+.section-page .all-section .section-card .k-btn-group .show-btn{
+    background-color: rgb(4, 200, 4);
+}
