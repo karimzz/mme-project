@@ -34,7 +34,7 @@ console.log(allSection)
           <Skeleton animation={false} /></Box>) : ""
         }
           {
-            allSection[0] && allSection[0].map((item )=>{
+            allSection && allSection.map((item )=>{
               return <SectionCard key={item.id} id={item.id} title={item.title}></SectionCard>
             })
           }

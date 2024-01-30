@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const initialState = {
-    allSection : [] , 
+    allSection : null , 
     load : false
 } ;
 
@@ -32,7 +32,7 @@ const SectionSlice = createSlice({
         // For Get All Sections 
         [getAllSection.fulfilled] : (state , action)=>{
             state.load = false
-            state.allSection.push(action.payload)
+            state.allSection = action.payload
             console.log("Fuilfiled")
         } , 
         [getAllSection.pending ] : (state , action)=>{
