@@ -21,14 +21,17 @@ export const updateSection = createAsyncThunk('section/updatesection' , async (a
 
 
 // Delete Section
-export const deleteSection = createAsyncThunk("section/deletesection" , async(args)=>{
+export const deleteSection = createAsyncThunk("section/deletesection" , async(args )=>{
     const response = await axios.delete(`http://127.0.0.1:8000/api/section/${args.id}` , {
         headers : {
+            // Token 
             Authorization : `Bearer ${args.token}`  
         }
     })
     return args.id
 })
+
+
 
 // Add Section
 export const addSection = createAsyncThunk("section/addsection" , async(args )=>{

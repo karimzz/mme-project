@@ -18,7 +18,6 @@ const AddSection = ({handleClose}) => {
     const addSectionHandler = ()=>{
         dispatch(addSection({title : titleRef.current.value , token}))
         handleClose()
-        
     }
     
 

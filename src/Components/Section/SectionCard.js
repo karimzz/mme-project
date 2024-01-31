@@ -13,7 +13,7 @@ const dispatch = useDispatch() ;
 
 // Delete Function
 const deleteHandler = ()=>{
-dispatch(deleteSection({token , id  }))
+dispatch(deleteSection({ token  , id  }))
 
 }
 
