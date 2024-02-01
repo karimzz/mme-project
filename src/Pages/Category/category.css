@@ -1,0 +1,112 @@
+
+
+.category-page{
+    height: calc(100vh - 62px);
+    overflow-y: scroll;
+    padding: 20px;
+    padding-right: 0px;
+}
+
+.category-page .category-btn{
+    background-color: var(--font-color);
+    border-radius: 6px;
+    margin: 14px 0px;
+    box-shadow: none;
+    transition: .3s;
+}
+.category-page .category-btn:hover{
+    background-color: var(--font-color);
+    opacity: .8;
+}
+
+ .category-page .all-category{
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 30px;
+
+}
+
+@media(max-width:500px){
+    .category-page .all-category{
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.category-page .all-category .category-card{
+    width: 220px;
+    padding: 15px 10px;
+    cursor: pointer;
+    margin-right: 20px;
+    transition: .3s;
+    margin-bottom: 15px;
+}
+.category-page .all-category .category-card:hover{
+    transform: scale(1.04);
+    box-shadow: 1px 1px 10px #EEE;
+}
+
+@media(max-width:500px){
+    .category-page .all-category .category-card{
+        width: 260px;
+    }
+}
+
+.category-page .all-category .category-card .image{
+    text-align: center;
+}
+
+.category-page .all-category .category-card .image img{
+    width: 180px;
+}
+
+@media(max-width:500px){
+    .category-page .all-category .category-card .image img{
+        width: 210px;
+    }
+}
+
+.category-page .all-category .category-card h4{
+    font-size: 19px;
+    margin-top: 10px;
+}
+
+.category-page .all-category .category-card p.price{
+    color: #888888;
+    font-weight: 400;
+}
+
+ .add-category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.add-category h3{
+    text-align: center;
+    font-size: 40px;
+}
+
+.add-category .category-field{
+    width: 400px;
+    max-width: 100%;
+    margin-top: 30px;
+}
+
+.add-category .upload-photo{
+    position: relative;
+    margin-bottom: 14px;
+    margin-top: -13px;
+
+}
+.add-category .upload-photo input{
+    position: absolute;
+    width: 100%;
+    height: 100%;opacity: 0;
+}
+.add-category .upload-photo img{
+    width: 60px;
+    height: 60px;
+}

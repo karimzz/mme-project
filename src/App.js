@@ -25,6 +25,7 @@ import VerificationPassword from './Components/ForgetPassword/VerificationPasswo
 import CreateNewPassword from './Components/ForgetPassword/CreateNewPassword';
 import ProductPage from './Pages/Product/ProductPage';
 import SectionPage from './Pages/Section/SectionPage';
+import CategoryPage from './Pages/Category/CategoryPage';
 
 
 function App() {
@@ -71,6 +72,9 @@ function App() {
               <Route path='/offer' element={  Auth  ? <Offer /> : <LoginPage />   } />
               <Route path='/offer/add' element={   Auth  ? <AddOffer /> : <LoginPage /> } />
               <Route path='/offer/edit' element={  Auth  ? <EditOffer /> : <LoginPage /> } />
+
+              {/* Category  */}
+              <Route path='/category' element={ Auth ?  <CategoryPage /> : <LoginPage />} />
 
               {/* Section */}
               <Route path='/section' element={Auth ? <SectionPage /> : <LoginPage />} >

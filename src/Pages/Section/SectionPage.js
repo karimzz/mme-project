@@ -21,6 +21,7 @@ const SectionPage = () => {
     position: 'absolute',
     top: '50%',
     left: '50%',
+    maxWidth : "100%" , 
     transform: 'translate(-50%, -50%)',
     width: 700,
     height : 400,
@@ -108,15 +109,15 @@ const {allSection , load } = useSelector(state => state.SectionSlice) ;
 
         <div className='all-section'>
         {
-          load ? ( <Box>
-            <Skeleton />
-          <Skeleton animation="wave" />
-          <Skeleton animation={false} /></Box>) : ""
+          
         }
           {
-            allSection && allSection.map((item )=>{
+            allSection ? allSection.map((item )=>{
               return <SectionCard openModal ={handleUpdateOpen} key={item.id} id={item.id} title={item.title}></SectionCard>
-            })
+            }) :load ? ( <Box>
+              <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} /></Box>) : ""
           }
         </div>
     </section>

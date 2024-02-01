@@ -26,7 +26,7 @@ const SideBar = () => {
             <li> <NavLink to="/message"><span className="material-symbols-outlined">chat</span> <span className='hidden-in-mobile'>Chats</span> </NavLink></li>
             <li> <NavLink to="/section"><span className="material-symbols-outlined">pip_exit</span> <span className='hidden-in-mobile'>Section</span> </NavLink></li>
             <li> <NavLink to="/users"><span className="material-symbols-outlined">groups</span> <span className='hidden-in-mobile'>Customers</span> </NavLink></li>
-            <li> <NavLink to="/service"><span className="material-symbols-outlined">self_care</span> <span className='hidden-in-mobile'>Category</span> </NavLink></li>
+            <li> <NavLink to="/category"><span className="material-symbols-outlined">self_care</span> <span className='hidden-in-mobile'>Category</span> </NavLink></li>
             <li> <NavLink to="/setting"><span className="material-symbols-outlined">settings</span> <span className='hidden-in-mobile'>Setting</span> </NavLink></li>
             <li> <NavLink to="/request"><span className="material-symbols-outlined">supervisor_account</span> <span className='hidden-in-mobile'>Request</span> </NavLink></li>
         </ul>

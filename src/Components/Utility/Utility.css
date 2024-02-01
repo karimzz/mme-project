@@ -120,12 +120,19 @@ nav .search {
     border-radius:5px ;
 }
 
+@media(max-width:500px){
+    nav .search{
+        margin-right: 10px;
+    }
+}
 nav .search input{
     border: none;
     width: 100%;
+    transition: .3s;
     caret-color: #93a0b3;
 
 }
+
 
 nav .search  span{
     color: #93a0b3;
@@ -150,6 +157,12 @@ nav .btn-container button{
     border: none;
     cursor: pointer;
     transition: var(--main-transiton);
+}
+
+@media(max-width:500px){
+    nav .btn-container button{
+        padding: 6px 10px !important;
+    }
 }
 
 nav .btn-container button:hover{
