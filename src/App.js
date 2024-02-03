@@ -5,7 +5,6 @@ import SideBar from './Components/Utility/SideBar';
 import LoginPage from './Pages/Auth/LoginPage';
 import AllUsersPage from './Pages/Users/AllUsersPage';
 import NotificationPage from './Pages/Notification/NotificationPage';
-import Products from './Components/Product/Products';
 import Service from './Components/Sevices/Service';
 import AddService from './Components/Sevices/AddService';
 import EditService from './Components/Sevices/EditService';
@@ -45,7 +44,7 @@ function App() {
           
           {/* Route Here  */}
             <Routes>
-              <Route path='/' element={<h2>Your Are Default</h2>} />
+              <Route path='/' element={<h2>Default Page </h2>} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/users' element={ Auth ? <AllUsersPage />  : <LoginPage />  } />
               {/* Forget Password */}

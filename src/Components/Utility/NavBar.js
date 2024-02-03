@@ -1,17 +1,8 @@
 import React from 'react' ;
 import "./Utility.css"
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
 const NavBar = () => {
 
-
-  // For Change Route
-  const navigate =useNavigate()  ;
-
-
-  
 
 
   // // Teest Axios

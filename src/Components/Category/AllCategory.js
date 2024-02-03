@@ -3,11 +3,10 @@ import CategoryCard from './CategoryCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategories } from '../../RTK/Slice/CategorySlice';
 import { Skeleton } from '@mui/material';
-import pic from "./../../Image/category.png"
 
 
 
-const AllCategory = () => {
+const AllCategory = ({handleUpdateOpen}) => {
 
   console.log("Entered Here")
   
@@ -30,10 +29,9 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
 
   return (
     <div className='all-category'>
-        <CategoryCard title={"Test Offiline"} image={pic} id={123} />
         {
           data ? data.map((item , idx)=>{
-            return <CategoryCard key={idx} title={item.title} id={item.id} image={item.image}  />
+            return <CategoryCard handleUpdateOpen={handleUpdateOpen} key={idx} title={item.title} id={item.id} image={item.image}  />
           }) : load ? <div>
           <Skeleton variant="rectangular" width={210} height={118} />
           <Skeleton width="60%" />

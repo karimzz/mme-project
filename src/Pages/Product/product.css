@@ -100,11 +100,19 @@ font-weight: bold;
     cursor: pointer;
     width: 210px;
     transition: .3s;
+    padding: 15px 10px  ;
 }
 
-.product-secition .product-card:hover .image   {
-transform: scale(1.1);
+.product-secition .product-card:hover{
+transform: scale(1.04);
+box-shadow: 1px 1px 10px #EEE;
 }
+
+/* .product-secition .product-card:hover .image   {
+transform: scale(1.1);
+} */
+
+
 .product-secition .product-card .image {
 background-color: #f5f6f6;
 border-radius: 6px;

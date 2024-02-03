@@ -10,6 +10,7 @@ import AddCategory from '../../Components/Category/AddCategory';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSection } from '../../RTK/Slice/SectionSlice';
 import { ToastContainer } from 'react-toastify';
+import UpdateCategory from '../../Components/Category/UpdateCategory';
 
 
 const CategoryPage = () => {
@@ -33,6 +34,11 @@ const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
 const handleClose = () => setOpen(false);
 
+// For Update Section
+const [updateOpen, setUpdateOpen] = useState(false);
+const handleUpdateOpen = () => setUpdateOpen(true);
+const handleUpdateClose = () => setUpdateOpen(false);
+
 
 
 
@@ -54,7 +60,7 @@ const style = {
 
   return (
     <section className='category-page'>
-      <ToastContainer />
+      <ToastContainer  />
     <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -70,7 +76,30 @@ const style = {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <AddCategory handleClose={handleClose}/>
+            <AddCategory handleClose={handleClose}  />
+          </Box>
+        </Fade>
+      </Modal>
+
+
+      {/* For Update */}
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={updateOpen}
+        onClose={handleUpdateClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={updateOpen}>
+          <Box sx={style}>
+          
+            <UpdateCategory handleUpdateClose={handleUpdateClose}/>
           </Box>
         </Fade>
       </Modal>
@@ -78,7 +107,7 @@ const style = {
 
     <Button onClick={handleOpen} className='category-btn' variant="contained">Add Category</Button>
 
-    <AllCategory />
+    <AllCategory handleUpdateOpen={handleUpdateOpen} />
 
     </section>
   )

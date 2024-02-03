@@ -53,7 +53,7 @@ const SectionPage = () => {
   // For Get All Section
   useEffect(()=>{
     dispatch(getAllSection({token}))
-  } , [])
+  } , [dispatch])
 
 const {allSection , load } = useSelector(state => state.SectionSlice) ;
 
