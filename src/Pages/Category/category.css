@@ -80,10 +80,13 @@
 }
 
  .add-category{
+    /* padding: 10px 0px; */
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+
+
     
 }
 
@@ -101,7 +104,7 @@
 .add-category .upload-photo{
     position: relative;
     margin-bottom: 14px;
-    margin-top: -13px;
+    margin-top: -8px;
 
 }
 .add-category .upload-photo input{

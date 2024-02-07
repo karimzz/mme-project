@@ -25,6 +25,7 @@ import CreateNewPassword from './Components/ForgetPassword/CreateNewPassword';
 import ProductPage from './Pages/Product/ProductPage';
 import SectionPage from './Pages/Section/SectionPage';
 import CategoryPage from './Pages/Category/CategoryPage';
+import ProductDetails from './Components/Product/ProductDetails';
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
               <Route path='/product'  element={ Auth ? <ProductPage /> : <LoginPage /> } />
               <Route path='/product/add' element={Auth ? <AddProduct /> : <LoginPage /> } />
               <Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } />
+              <Route path='/product/:id' element={ Auth ? <ProductDetails /> : <LoginPage /> } />
 
               <Route path='/notification' element={ Auth ? <NotificationPage /> : <LoginPage /> } />
               <Route path='/message' element={ Auth ? <ChatPage /> : <LoginPage /> } />
