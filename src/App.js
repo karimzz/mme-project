@@ -48,6 +48,7 @@ function App() {
               <Route path='/' element={<h2>Default Page </h2>} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/users' element={ Auth ? <AllUsersPage />  : <LoginPage />  } />
+
               {/* Forget Password */}
               <Route path='/forgetpassword'>
                 <Route index element={<ForgetPasswordSendCode />} />
@@ -58,7 +59,7 @@ function App() {
               {/* Product  */}
               <Route path='/product'  element={ Auth ? <ProductPage /> : <LoginPage /> } />
               <Route path='/product/add' element={Auth ? <AddProduct /> : <LoginPage /> } />
-              <Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } />
+              {/*<Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } /> */}
               <Route path='/product/:id' element={ Auth ? <ProductDetails /> : <LoginPage /> } />
 
               <Route path='/notification' element={ Auth ? <NotificationPage /> : <LoginPage /> } />
@@ -89,6 +90,7 @@ function App() {
                   <Route path="canceled" element={ Auth  ? <RequestCanceledList /> : <LoginPage /> } />
                   <Route path='recieved' element={ Auth  ? <RequestRecievedList /> : <LoginPage /> } />
               </Route>
+              
             </Routes>
         </div>
       </main>

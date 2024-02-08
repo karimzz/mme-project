@@ -4,6 +4,7 @@ import ForgetPasswordSlice from "../Slice/ForgetPasswordSlice";
 import SectionSlice from "../Slice/SectionSlice";
 import CategorySlice from "../Slice/CategorySlice";
 import ProductSlice  from "../Slice/ProductSlice";
+import UserSlice from "../Slice/UserSlice";
 
 const store = configureStore({
     reducer : {
@@ -11,7 +12,8 @@ const store = configureStore({
         ForgetPasswordSlice ,
         SectionSlice ,
         CategorySlice  ,
-        ProductSlice
+        ProductSlice ,
+        UserSlice
     }
 })
 

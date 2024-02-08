@@ -28,7 +28,7 @@ export const deleteCategory = createAsyncThunk("category/deletecategory" , async
 
 
 // For Add A Specific Category
-export const addCategory = createAsyncThunk("category/updatecategory" , async (args)=>{
+export const addCategory = createAsyncThunk("category/addcategory" , async (args)=>{
     const response = await axios.post("http://127.0.0.1:8000/api/categories" , args.data , {
         headers : {
             Authorization : `Bearer ${args.token}`

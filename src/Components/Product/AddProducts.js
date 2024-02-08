@@ -137,10 +137,8 @@ const addProductHandler = ()=>{
       value={money}
       label="Age"
       onChange={handleMoney}
-
     >
 
-    
 
       {
         moneyList.map((item , idx)=>{

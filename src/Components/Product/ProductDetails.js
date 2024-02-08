@@ -1,12 +1,39 @@
 import React, { Fragment, useEffect } from 'react'
-import pic from "./../../Image/oil.jpg"
 import starPic from "./../../Image/star.png"
 import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getSpecifiProduct } from '../../RTK/Slice/ProductSlice'
+import EditProduct from './EditeProduct'
+
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import { getAllCategories } from '../../RTK/Slice/CategorySlice'
+import { ToastContainer } from 'react-toastify'
 
 const ProductDetails = () => {
+
+  // For Handle Overlay
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 800,
+    bgcolor: 'background.paper',
+    border: 'none',
+    boxShadow: 24,
+    p: 4,
+    maxWidth : "100%"
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
 
   // For Access Token
 const {token } = useSelector(state => state.AuthSlice.auth) ;
@@ -20,6 +47,7 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
   // For Get A SPiecific Product 
   useEffect(()=>{
     dispatch(getSpecifiProduct({token , id}))
+    dispatch(getAllCategories({token})) 
   } , [dispatch])
 
   // For Get data
@@ -28,11 +56,33 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
 
   return (
     <div className='product-details'>
+    <ToastContainer />
       {
         error ? (
           <h2 >Product Not Found</h2>
         ) : ""
       }
+
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <EditProduct dataOfProduct={data} handleClose={handleClose} />
+          </Box>
+        </Fade>
+      </Modal>
+
       {
         data ? (
           <Fragment>
@@ -57,7 +107,7 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
           <div className='out-stock'> <span className='ball'></span> out of stock</div>
           }
         </div>
-        <Button variant="contained" style={{width : "200px" , maxWidth : "100%" , marginTop : "20px"}} className='add-category-btn'>Edite </Button>
+        <Button variant="contained" onClick={handleOpen} style={{width : "200px" , maxWidth : "100%" , marginTop : "20px"}} className='add-category-btn'>Edite </Button>
       </div></Fragment>
         ) : load ? "loadding" : ""
       }

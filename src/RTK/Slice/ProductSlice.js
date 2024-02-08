@@ -70,7 +70,9 @@ const ProductSlice = createSlice({
     name : "product" , 
     initialState ,
     reducers : {
-
+        deleteCurrentProduct :(state ,action)=>{
+            state.specifiProduct.data = null
+        }
     } ,extraReducers : {
         // For Get all product
         [getAllProduct.fulfilled] : (state , action)=>{
@@ -127,9 +129,32 @@ const ProductSlice = createSlice({
             state.specifiProduct.load = false
             
         } ,
-        // For Get A Spiceifi Product
+        // For Update Producy
+        [updateProduct.fulfilled] : (state , action)=>{
+            toast.success("Product Updated Successfully")
+            state.specifiProduct.data = action.payload.items ;
+            if(state.allProduct )
+            {
+                const currentIndex = state.allProduct.findIndex((item)=>{
+                    return item.id === action.payload.items.id
+                })
+                console.log(currentIndex);
+                state.allProduct[currentIndex] = action.payload.items
+            }else{
+                state.allProduct = action.payload.items
+            }
+
+        } , 
+        [updateProduct.pending] : (state , action)=>{
+
+        } ,
+        [updateProduct.rejected] : (state , action)=>{
+            toast.error("Somehting error with update product")
+        } ,
         
     }
 })
 
 export default ProductSlice.reducer
+
+export const {deleteCurrentProduct} = ProductSlice.actions ; 

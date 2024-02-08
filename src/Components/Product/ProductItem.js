@@ -1,12 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteProduct } from '../../RTK/Slice/ProductSlice';
+import { deleteCurrentProduct, deleteProduct } from '../../RTK/Slice/ProductSlice';
 import star from "./../../Image/star.png" ;
 
 const ProductItem = ({id , name , image ,details , price , coin ,available , rate ,category_id}) => {
+
+// For Change Route
+const navigate = useNavigate() ; 
+
+const  goToProductDetails = ()=>{
+    dispath(deleteCurrentProduct())
+    navigate(`${id}`)
+}
 
 // For Dispatch Action
 const dispath = useDispatch() ;
@@ -53,7 +61,7 @@ const delelteItemHandler = ()=>{
             variant="contained"
             aria-label="Disabled elevation buttons"
           >
-            <Link to={`${id}`} style={{textDecoration : "none" , }}><Button color='success'>View</Button></Link>
+            <Button onClick={goToProductDetails} color='success'>View</Button>
             <Button onClick={delelteItemHandler} color='error'>Delete</Button>
           </ButtonGroup>
         </div>

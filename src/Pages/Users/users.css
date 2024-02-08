@@ -80,7 +80,7 @@
     margin-right: 10px;
 }
 
-.user-card .user-info .btn-group{
+/* .user-card .user-info .btn-group{
     margin-top: 26px;
     display:flex;
     justify-content: center;
@@ -117,6 +117,6 @@ background-color: #0075FF;
 
 .user-card .user-info .btn-group button:last-child{
     background-color: rgb(29, 28, 28);
-}
+} */
 
 /* End User Component */
