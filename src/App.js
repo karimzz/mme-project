@@ -1,7 +1,5 @@
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
 import './App.css';
-import NavBar from './Components/Utility/NavBar';
-import SideBar from './Components/Utility/SideBar';
 import LoginPage from './Pages/Auth/LoginPage';
 import AllUsersPage from './Pages/Users/AllUsersPage';
 import NotificationPage from './Pages/Notification/NotificationPage';
@@ -10,7 +8,6 @@ import AddService from './Components/Sevices/AddService';
 import EditService from './Components/Sevices/EditService';
 import ChatPage from './Pages/Chat/ChatPage';
 import AddProduct from './Components/Product/AddProduct';
-import EditProduct from './Components/Product/EditeProduct';
 import Offer from './Components/Offer/Offer';
 import AddOffer from './Components/Offer/AddOffer';
 import EditOffer from './Components/Offer/EditOffer';
@@ -59,11 +56,12 @@ function App() {
               </Route>
               
               {/* Product  */}
-              <Route path='/product'  element={ Auth ? <ProductPage /> : <LoginPage /> } />
-              <Route path='/product/add' element={Auth ? <AddProduct /> : <LoginPage /> } />
-              {/*<Route path='/product/edite' element={ Auth ? <EditProduct /> : <LoginPage /> } /> */}
-              <Route path='/product/:id' element={ Auth ? <ProductDetails /> : <LoginPage /> } />
+              <Route path= "/product">
+                <Route index element={<ProductPage />} />
+                <Route path=':id' element={<ProductDetails />} />
+              </Route>
 
+              {/* Notification */}
               <Route path='/notification' element={ Auth ? <NotificationPage /> : <LoginPage /> } />
 
               {/* Chat  */}
@@ -99,7 +97,7 @@ function App() {
               </Route>
 
             </Route>  
-            
+
             <Route path='/login' element={<LoginPage />} />
             </Routes>
 
