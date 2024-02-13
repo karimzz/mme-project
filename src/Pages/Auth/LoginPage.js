@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import {Form,Container} from 'react-bootstrap';
 import "./login.css"
@@ -20,9 +20,11 @@ const LoginPage = () => {
   // For Access Slice 
   const {loadding , auth} = useSelector(state => state.AuthSlice) ; 
 
-  if(auth){
-    navigate("/error")
-  }
+  useEffect(()=>{
+    if(auth){
+      navigate("/")
+    }
+  }, [auth])
 
 
   // For Dispatch Action

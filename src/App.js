@@ -28,6 +28,7 @@ import CategoryPage from './Pages/Category/CategoryPage';
 import ProductDetails from './Components/Product/ProductDetails';
 import DefaultChat from './Components/Chat/DefaultChat';
 import ConversionComponent from './Components/Chat/ConversionComponent';
+import SharedComponent from './Components/Utility/SharedComponent';
 
 
 function App() {
@@ -39,16 +40,15 @@ function App() {
   return (
     <div>
     <BrowserRouter>
-      <main>
-        {Auth ? <SideBar /> : ""}
-        
-        <div className={`content ${!Auth ? "content-not-auth" : '' }`} style={{overflow : "hidden"}}>
-          {Auth ? <NavBar />  : ""}
+      
           
           {/* Route Here  */}
             <Routes>
+
+            {/* Collect All route */}
+            <Route element={Auth ? <SharedComponent /> : <LoginPage /> }>
+
               <Route path='/' element={<h2>Default Page </h2>} />
-              <Route path='/login' element={<LoginPage />} />
               <Route path='/users' element={ Auth ? <AllUsersPage />  : <LoginPage />  } />
 
               {/* Forget Password */}
@@ -97,10 +97,12 @@ function App() {
                   <Route path="canceled" element={ Auth  ? <RequestCanceledList /> : <LoginPage /> } />
                   <Route path='recieved' element={ Auth  ? <RequestRecievedList /> : <LoginPage /> } />
               </Route>
-              
+
+            </Route>  
+            
+            <Route path='/login' element={<LoginPage />} />
             </Routes>
-        </div>
-      </main>
+
       </BrowserRouter>
     
     </div>
