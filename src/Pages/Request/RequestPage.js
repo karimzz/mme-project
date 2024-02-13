@@ -8,7 +8,7 @@ const RequestPage = () => {
         <div className='request-title'><h2>Request</h2></div>
         <div className='requset-content'>
             <div className='request-type'>
-                <NavLink to={"process"}>Request Process</NavLink>
+                <NavLink end  to={"/request"} >Request Process</NavLink>
                 <NavLink to={"recieved"}>Request Recieved</NavLink>
                 <NavLink to={"canceled"}>Request Canceled</NavLink>
             </div>

@@ -3,7 +3,7 @@
 .main-request{
     padding: 20px;
     overflow-y: scroll;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 68px);
 }
 
 .main-request .request-title h2{

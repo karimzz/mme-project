@@ -43,9 +43,9 @@ function App() {
             <Routes>
 
             {/* Collect All route */}
-            <Route element={Auth ? <SharedComponent /> : <LoginPage /> }>
+            <Route path='/' element={Auth ? <SharedComponent /> : <LoginPage /> }>
 
-              <Route path='/' element={<h2>Default Page </h2>} />
+              <Route index element={<h2>Default Page </h2>} />
               <Route path='/users' element={ Auth ? <AllUsersPage />  : <LoginPage />  } />
 
               {/* Forget Password */}
@@ -91,7 +91,6 @@ function App() {
               {/* Request  */}
               <Route path='/request' element={ Auth  ? <RequestPage /> : <LoginPage /> }>
                   <Route index  element={ Auth  ? <RequestProcessList /> : <LoginPage /> }  />
-                  <Route path='process'  element={ Auth  ? <RequestProcessList /> : <LoginPage /> } />
                   <Route path="canceled" element={ Auth  ? <RequestCanceledList /> : <LoginPage /> } />
                   <Route path='recieved' element={ Auth  ? <RequestRecievedList /> : <LoginPage /> } />
               </Route>
