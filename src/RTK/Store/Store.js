@@ -5,6 +5,8 @@ import SectionSlice from "../Slice/SectionSlice";
 import CategorySlice from "../Slice/CategorySlice";
 import ProductSlice  from "../Slice/ProductSlice";
 import UserSlice from "../Slice/UserSlice";
+import NotificationSlice from "../Slice/NotificationSlice";
+import MessageSlice from "../Slice/MessageSlice";
 
 const store = configureStore({
     reducer : {
@@ -13,7 +15,9 @@ const store = configureStore({
         SectionSlice ,
         CategorySlice  ,
         ProductSlice ,
-        UserSlice
+        UserSlice ,
+        NotificationSlice , 
+        MessageSlice
     }
 })
 

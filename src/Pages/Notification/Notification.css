@@ -67,6 +67,7 @@
 
 .not-card .des p span.open{
     color: black;
+    margin-right: 6px;
 }
 
 .not-card .des span.date-open{

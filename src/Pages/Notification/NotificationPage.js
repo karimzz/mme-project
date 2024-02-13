@@ -1,10 +1,12 @@
-import React from 'react' ;
+import React, { useEffect } from 'react' ;
 import "./Notification.css" ; 
 import NotificationComponent from '../../Components/Notification/NotificationComponent';
 import user  from "./../../Image/user.png" ; 
 import { Fade } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getAllNotification } from '../../RTK/Slice/NotificationSlice';
+import { Skeleton } from '@mui/material';
 
 const NotificationPage = () => {
 
@@ -12,26 +14,33 @@ const NotificationPage = () => {
   // For Handlle Route
   const navigate = useNavigate() 
 
-  // For Access Slice 
-  const {auth } = useSelector(state => state.AuthSlice) ; 
-  console.log(auth) ; 
-  if(auth == null){
-    navigate("/login")
-  }
+  // For Access Token
+  const {token } = useSelector(state => state.AuthSlice.auth) ;
+
+  // For Dispatch Action
+  const dispatch = useDispatch() ;
+
+  useEffect(()=>{
+    dispatch(getAllNotification({token}))
+  } , [dispatch])
+
+  const {data  , load} = useSelector(state => state.NotificationSlice.allNotification)
+
+
   return (
     
     <div className='not-page'>
     <h2 className='not-title'>Notifications</h2>
     <div className='not-list'>
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"{\"request_id\":2,\"user_send\":\"eslam\",\"title\":\"booking \\\"}"} open={false} />
-        <NotificationComponent  username={"Samaaa"} date={"3 day"} image={user} des={"mentioned you in a comment"} open={true} />
-        <NotificationComponent  username={"karimzz"} date={"2 day"} image={user} des={"mentioned you in a comment"} open={true} />
-        <NotificationComponent  username={"karimzz"} date={" Just Now"} image={user} des={"mentioned you in a comment"} open={false} />
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"mentioned you in a comment"} open={true}/>
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"mentioned you in a comment"} open={false}/>
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"mentioned you in a comment"} />
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"mentioned you in a comment"} />
-        <NotificationComponent  username={"karimzz"} date={"4 day"} image={user} des={"mentioned you in a comment"} />
+
+        {/* For Get All Notification */}
+        {
+          data ? data.map((item)=>{
+            return <NotificationComponent username={item.data.user_send} image={user} date={item.created_at} des={item.data.title} /> 
+            
+          }) :load ? <Skeleton  width={500} height={150}/>  : ""
+        }
+
 
     </div>
 </div>

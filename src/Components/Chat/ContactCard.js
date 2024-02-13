@@ -1,19 +1,27 @@
 import React from 'react'
 import user from "./../../Image/user.png" ; 
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-const ContactCard = ({username , image}) => {
+const ContactCard = ({username , id , image , body}) => {
+
+  const navigate = useNavigate() ; 
+  const getChat = ()=>{
+    console.log(`Get Chat Clicked ${id}`)
+    navigate(`${id}`) ; 
+  }
   return (
-    <a href='/'  style={{textDecoration : "none" , display : "block" , color : "black"}}>
-        <div className='contact-card'>
+      <NavLink  className='contact-card' to={`${id}`} style={{ display :"block",textDecoration :"none" , color :"black"}}>
             <div className='profile'>
                 <div className='logo'>
                     <img src={image} alt='profile' loading='lazy' />
                 </div>
-                <h5>{username}</h5>
+                <div className='info' >
+                  <h5>{username}</h5>
+                  <p >{body}</p>
+                </div>
             </div>
-            <div className='ball'></div>
-        </div>
-    </a>
+        </NavLink>
+
   )
 }
 

@@ -26,6 +26,8 @@ import ProductPage from './Pages/Product/ProductPage';
 import SectionPage from './Pages/Section/SectionPage';
 import CategoryPage from './Pages/Category/CategoryPage';
 import ProductDetails from './Components/Product/ProductDetails';
+import DefaultChat from './Components/Chat/DefaultChat';
+import ConversionComponent from './Components/Chat/ConversionComponent';
 
 
 function App() {
@@ -63,7 +65,12 @@ function App() {
               <Route path='/product/:id' element={ Auth ? <ProductDetails /> : <LoginPage /> } />
 
               <Route path='/notification' element={ Auth ? <NotificationPage /> : <LoginPage /> } />
-              <Route path='/message' element={ Auth ? <ChatPage /> : <LoginPage /> } />
+
+              {/* Chat  */}
+              <Route path='/message' element={ Auth ? <ChatPage /> : <LoginPage /> }>
+                <Route index element={Auth ? <DefaultChat /> : <LoginPage />}></Route>
+                <Route path=':id' element={Auth ? <ConversionComponent /> : <LoginPage />}></Route>
+              </Route>
 
               {/* Services  */}
               <Route path='/service' element={ Auth ? <Service/> : <LoginPage />  }/>
