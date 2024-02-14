@@ -7,7 +7,6 @@ import Service from './Components/Sevices/Service';
 import AddService from './Components/Sevices/AddService';
 import EditService from './Components/Sevices/EditService';
 import ChatPage from './Pages/Chat/ChatPage';
-import AddProduct from './Components/Product/AddProduct';
 import Offer from './Components/Offer/Offer';
 import AddOffer from './Components/Offer/AddOffer';
 import EditOffer from './Components/Offer/EditOffer';

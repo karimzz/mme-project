@@ -7,6 +7,7 @@ import ProductSlice  from "../Slice/ProductSlice";
 import UserSlice from "../Slice/UserSlice";
 import NotificationSlice from "../Slice/NotificationSlice";
 import MessageSlice from "../Slice/MessageSlice";
+import BookingSlice from "../Slice/BookingSlice";
 
 const store = configureStore({
     reducer : {
@@ -17,7 +18,8 @@ const store = configureStore({
         ProductSlice ,
         UserSlice ,
         NotificationSlice , 
-        MessageSlice
+        MessageSlice ,
+        BookingSlice
     }
 })
 
