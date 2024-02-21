@@ -68,7 +68,6 @@ const UserSlice = createSlice({
         },
         // For Un Block User
         [unlockUser.fulfilled] : (state , action)=>{
-            console.log("Un Block Done Successfullu")
             toast.success("User UnBlock Succesfully")
             const currentIndex = state.allUser.data.findIndex((item)=>{
                 return item.id === action.payload
@@ -83,7 +82,6 @@ const UserSlice = createSlice({
         } ,
         // For Block User
         [blockUser.fulfilled ] : (state , action)=>{
-            console.log("Block Done Successfullu")
             toast.warning("User Block Succesfully")
             const currentIndex = state.allUser.data.findIndex((item)=>{
                 return item.id === action.payload

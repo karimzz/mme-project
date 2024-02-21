@@ -4,10 +4,11 @@ import { toast } from "react-toastify";
 
 
 
+const SECTION_URL = `http://127.0.0.1:8000/api/section` ; 
 
 // For Update Section
 export const updateSection = createAsyncThunk('section/updatesection' , async (args)=>{
-    const response = await axios.post(`http://127.0.0.1:8000/api/section/${args.id}` , {
+    const response = await axios.post(`${SECTION_URL}/${args.id}` , {
         title : args.title 
     } , {
         headers : {
@@ -22,7 +23,7 @@ export const updateSection = createAsyncThunk('section/updatesection' , async (a
 
 // Delete Section
 export const deleteSection = createAsyncThunk("section/deletesection" , async(args )=>{
-    const response = await axios.delete(`http://127.0.0.1:8000/api/section/${args.id}` , {
+    const response = await axios.delete(`${SECTION_URL}/${args.id}` , {
         headers : {
             // Token 
             Authorization : `Bearer ${args.token}`  
@@ -36,7 +37,7 @@ export const deleteSection = createAsyncThunk("section/deletesection" , async(ar
 // Add Section
 export const addSection = createAsyncThunk("section/addsection" , async(args )=>{
     console.log(args)
-    const response = await axios.post("http://127.0.0.1:8000/api/section" , {
+    const response = await axios.post(SECTION_URL , {
         title : args.title 
     } , {
         headers : {
@@ -50,7 +51,8 @@ export const addSection = createAsyncThunk("section/addsection" , async(args )=>
 
 //  For Get All Section 
  export const getAllSection = createAsyncThunk("section/getAllSection" , async (args , thunkAPI)=>{
-    const response = await axios.get("http://127.0.0.1:8000/api/section" , {
+    console.log("Get All Section Function Called") ;
+    const response = await axios.get(SECTION_URL , {
         headers : {
             Authorization : `Bearer ${args.token}` 
         }
@@ -79,6 +81,7 @@ const SectionSlice = createSlice({
     ,extraReducers : {
         // For Get All Sections 
         [getAllSection.fulfilled] : (state , action)=>{
+            console.log("Get All Section Slice Called")
             state.load = false
             state.allSection = action.payload
             
@@ -144,4 +147,7 @@ const SectionSlice = createSlice({
 
 export default SectionSlice.reducer ; 
 
-export const {addCurrent} = SectionSlice.actions ; 
+export const {addCurrent} = SectionSlice.actions ;
+
+
+export const getSections = (state) => state.SectionSlice ; 

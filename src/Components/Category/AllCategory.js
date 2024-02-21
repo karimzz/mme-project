@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import CategoryCard from './CategoryCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCategories } from '../../RTK/Slice/CategorySlice';
+import { getAllCategories, getCatogries } from '../../RTK/Slice/CategorySlice';
 import { Skeleton } from '@mui/material';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 
 
 const AllCategory = ({handleUpdateOpen}) => {
 
-  console.log("Entered Here")
+  console.log("All Category Component Called") ;
   
 // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+const token  = useSelector(getToken) ;
+
 
 
   // For Dispatch Action
@@ -23,8 +25,9 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
   } , [dispatch])
 
   // For Acces Category State
-  const {data , load} = useSelector(state => state.CategorySlice.allCategory) ;
-  console.log(data)
+  const {data , load} = useSelector(getCatogries) ;
+  console.log(`the Data in All Category component`)
+  console.log(data) ; 
 
 
   return (

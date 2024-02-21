@@ -5,6 +5,8 @@ import { InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
 import uploadPic from "./../../Image/upload.png" ; 
 import { updateCategory } from '../../RTK/Slice/CategorySlice';
+import { getSections } from '../../RTK/Slice/SectionSlice';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 
 
@@ -18,7 +20,7 @@ const imageRef =useRef(null ) ;
 const dispatch = useDispatch() ;
   
 // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+const token  = useSelector(getToken) ;
 
 // For Acces Title of category Update
 const {title , id} = useSelector(state => state.CategorySlice.currentCategoryTitle)
@@ -26,7 +28,7 @@ const {title , id} = useSelector(state => state.CategorySlice.currentCategoryTit
 const [categorytitle , setCategoryTitle] = useState(title) ; 
 
 // For Access Section and Push in Select
-const allSection = useSelector(state => state.SectionSlice.allSection) ;
+const {allSection} = useSelector(getSections) ;
 const [section, setSection] = React.useState('');
 
 // For Store Data

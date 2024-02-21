@@ -10,7 +10,6 @@ export const getSpecifiProduct = createAsyncThunk("product/specificproduct" , as
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data
 })
 
@@ -21,7 +20,6 @@ export const updateProduct = createAsyncThunk("product/updateproduct" , async(ar
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data
 })
 
@@ -43,7 +41,6 @@ export const addProduct = createAsyncThunk("product/addproduct" , async (args)=>
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data.item 
 })
 
@@ -76,6 +73,7 @@ const ProductSlice = createSlice({
     } ,extraReducers : {
         // For Get all product
         [getAllProduct.fulfilled] : (state , action)=>{
+            console.log("Get All Product Function Called") ;
             state.allProduct = action.payload
         } ,
         [getAllProduct.pending] : (state , action)=>{
@@ -86,6 +84,7 @@ const ProductSlice = createSlice({
         } ,
         // For Add Product
         [addProduct.fulfilled ] : (state , action)=>{
+            console.log("Add Product Called") ; 
             if(state.allProduct){
                 state.allProduct.push(action.payload) ;
             }else{
@@ -101,6 +100,7 @@ const ProductSlice = createSlice({
         } ,
         // For Delete Product 
         [deleteProduct.fulfilled] : (state , action)=>{
+            console.log("Delete Function Called")
             toast.success("Product Deleted Successfully")
             const newState = state.allProduct.filter((item)=>{
                 return item.id !== action.payload ;
@@ -115,6 +115,7 @@ const ProductSlice = createSlice({
         } ,
         // For Get A Spiceifi Product
         [getSpecifiProduct.fulfilled] : (state , action)=>{
+            console.log("Get Specific Function Called")
             state.specifiProduct.data = action.payload ;
             state.specifiProduct.load = true
             state.specifiProduct.error = false
@@ -131,6 +132,7 @@ const ProductSlice = createSlice({
         } ,
         // For Update Producy
         [updateProduct.fulfilled] : (state , action)=>{
+            console.log("Updated Function Called")
             toast.success("Product Updated Successfully")
             state.specifiProduct.data = action.payload.items ;
             if(state.allProduct )
@@ -146,7 +148,6 @@ const ProductSlice = createSlice({
 
         } , 
         [updateProduct.pending] : (state , action)=>{
-
         } ,
         [updateProduct.rejected] : (state , action)=>{
             toast.error("Somehting error with update product")

@@ -1,5 +1,4 @@
 import React from 'react'
-import user from "./../../Image/user.png" ; 
 
 const NotificationComponent = ({image  , des , date , open , username}) => {
   return (

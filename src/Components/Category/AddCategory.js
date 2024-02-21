@@ -5,6 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import uploadPic from "./../../Image/upload.png" ; 
 import { useDispatch, useSelector } from 'react-redux';
 import { addCategory } from '../../RTK/Slice/CategorySlice';
+import { getToken } from '../../RTK/Slice/AuthSlice';
+import { getSections } from '../../RTK/Slice/SectionSlice';
 
 
 const AddCategory = ({handleClose}) => {
@@ -20,10 +22,10 @@ const AddCategory = ({handleClose}) => {
   const dispatch = useDispatch() ; 
 
     // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+  const token  = useSelector(getToken) ;
   
   // For Access Section and Push in Select
-    const allSection = useSelector(state => state.SectionSlice.allSection) ;
+    const {allSection} = useSelector(getSections) ;
     const [section, setSection] = React.useState('');
 
   const data = new FormData() ;

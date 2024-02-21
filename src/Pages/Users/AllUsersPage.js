@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import "./users.css"
 import UserComponent from '../../Components/Users/UserComponent'
-import userProfile from "./../../Image/logo.png" ;
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllUser } from '../../RTK/Slice/UserSlice';
 import { ToastContainer } from 'react-toastify';
@@ -10,6 +9,7 @@ import Stack from '@mui/material/Stack';
 
 
 const AllUsersPage = () => {
+
 
 // For Acces Token 
 const {token} = useSelector(state => state.AuthSlice.auth) ; 

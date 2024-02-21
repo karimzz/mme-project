@@ -58,6 +58,8 @@ const style = {
     
 };
 
+console.log("Category Page Called")
+
   return (
     <section className='category-page'>
       <ToastContainer  />

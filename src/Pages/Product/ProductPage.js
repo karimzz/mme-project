@@ -33,6 +33,8 @@ const ProductPage = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  console.log("Product Page Called") ; 
+
   return (
     <section className='product-page'>
 
@@ -67,6 +69,7 @@ const ProductPage = () => {
           <h3>All Product</h3>
           <button  onClick={handleOpen} >Add Product</button>
         </div>
+
         <AllProduct />
       </div>
     </section>

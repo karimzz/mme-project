@@ -3,11 +3,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-
+const CATEGORY_URL = `http://127.0.0.1:8000/api/categories` ; 
 
 // For Update 
 export const updateCategory = createAsyncThunk("category/updatecategory" , async (args)=>{
-    const response = await axios.post(`http://127.0.0.1:8000/api/categories/${args.id}` ,args.data , {
+    const response = await axios.post(`${CATEGORY_URL}/${args.id}` ,args.data , {
         headers : {
             Authorization : `Bearer ${args.token}`
         }
@@ -17,7 +17,7 @@ export const updateCategory = createAsyncThunk("category/updatecategory" , async
 
 // For Delete Category 
 export const deleteCategory = createAsyncThunk("category/deletecategory" , async (args)=>{
-    const response = await axios.delete(`http://127.0.0.1:8000/api/categories/${args.id}` , {
+    const response = await axios.delete(`${CATEGORY_URL}/${args.id}` , {
         headers : {
             Authorization : `Bearer ${args.token}`
         }
@@ -29,7 +29,7 @@ export const deleteCategory = createAsyncThunk("category/deletecategory" , async
 
 // For Add A Specific Category
 export const addCategory = createAsyncThunk("category/addcategory" , async (args)=>{
-    const response = await axios.post("http://127.0.0.1:8000/api/categories" , args.data , {
+    const response = await axios.post(CATEGORY_URL , args.data , {
         headers : {
             Authorization : `Bearer ${args.token}`
         }
@@ -39,12 +39,12 @@ export const addCategory = createAsyncThunk("category/addcategory" , async (args
 
 // For Get All Category
 export const getAllCategories = createAsyncThunk("category/getallcategory" , async (args )=>{
-    const response = await axios.get("http://127.0.0.1:8000/api/categories" , {
+    const response = await axios.get(CATEGORY_URL , {
         headers : {
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
+    console.log(`The All Category API Called`)
     return  await response.data
 })
 
@@ -69,6 +69,7 @@ const CategorySlice = createSlice({
     extraReducers :{
         // For Get All Category
         [getAllCategories.fulfilled] : (state , action)=>{
+            console.log("Get All Category Function Called")
             state.allCategory.data = action.payload ; 
             state.allCategory.load = false
         } ,
@@ -82,6 +83,7 @@ const CategorySlice = createSlice({
         },
         // For Add Category
         [addCategory.fulfilled] : (state , action)=>{
+            console.log("Add Category Function Called")
             if(state.allCategory.data)
             {
                 state.allCategory.data.push(action.payload)
@@ -99,6 +101,7 @@ const CategorySlice = createSlice({
         } ,
         // For Delete Category
         [deleteCategory.fulfilled ] : (state , action)=>{
+            console.log('Delete Category Function Called')
             const newState = state.allCategory.data.filter((item)=>{
                 return item.id !== action.payload
             })
@@ -113,6 +116,7 @@ const CategorySlice = createSlice({
         },
         // For Update Category
         [updateCategory.fulfilled ] : (state , action)=>{
+            console.log('Update Category Function Called')
             const currentIndex = state.allCategory.data.findIndex((item)=>{
                 return item.id === action.payload.id
             })
@@ -134,3 +138,6 @@ const CategorySlice = createSlice({
 export default CategorySlice.reducer
 
 export const {addCurrentCategory} = CategorySlice.actions ;
+
+
+export const getCatogries = state => state.CategorySlice.allCategory

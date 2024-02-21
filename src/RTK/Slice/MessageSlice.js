@@ -35,7 +35,6 @@ export const getAllMessage = createAsyncThunk("message/getallmessage" ,async (ar
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data.data)
     return response.data.data
 } )
 
@@ -110,3 +109,5 @@ const MessageSlice = createSlice({
 export default MessageSlice.reducer ;
 
 export const {deleteSpecific} = MessageSlice.actions ;
+
+export const GetAllMessage = state => state.MessageSlice.allMessage

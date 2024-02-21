@@ -9,7 +9,6 @@ export const getAllNotification = createAsyncThunk("notification/getallnotificat
             Authorization : `Bearer ${args.token}`
         }
     } )
-    console.log(response.data.data)
     return response.data.data
 })
 
@@ -43,3 +42,6 @@ const NotificationSlice = createSlice({
 })
 
 export default NotificationSlice.reducer ; 
+
+
+export const GetAllNotification = state => state.NotificationSlice.allNotification

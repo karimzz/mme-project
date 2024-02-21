@@ -10,7 +10,7 @@ const RequestPage = () => {
         <ToastContainer />
         <div className='requset-content'>
             <div className='request-type'>
-                <NavLink end  to={"/request"} >Request Process</NavLink>
+                <NavLink end  to={"."} >Request Process</NavLink>
                 <NavLink to={"recieved"}>Request Recieved</NavLink>
                 <NavLink to={"canceled"}>Request Canceled</NavLink>
             </div>

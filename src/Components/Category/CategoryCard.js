@@ -1,16 +1,17 @@
-import React from 'react'
+import React , {memo} from 'react'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addCurrentCategory, deleteCategory } from '../../RTK/Slice/CategorySlice';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
-const CategoryCard = ({title ,image ,id ,handleUpdateOpen}) => {
+const CategoryCard = memo( ({title ,image ,id ,handleUpdateOpen}) => {
 
 
 // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+const token  = useSelector(getToken) ;
 
   // For Dispatch Action
   const dispatch = useDispatch() ;
@@ -45,5 +46,6 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
     
   )
 }
+)
 
 export default CategoryCard

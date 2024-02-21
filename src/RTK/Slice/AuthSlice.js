@@ -77,3 +77,5 @@ const AuthSlice = createSlice({
 
 export default AuthSlice.reducer
 
+
+export const getToken = state => state.AuthSlice.auth.token

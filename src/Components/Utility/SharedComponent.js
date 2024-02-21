@@ -15,7 +15,7 @@ const SharedComponent = () => {
         
         <div className={`content ${!Auth ? "content-not-auth" : '' }`} style={{overflow : "hidden"}}>
           {Auth ? <NavBar />  : ""}
-          <Outlet />
+          <Outlet  />
           </div>
      </main>    
   )

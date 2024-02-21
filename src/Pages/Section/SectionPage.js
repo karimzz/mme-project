@@ -11,10 +11,10 @@ import { Skeleton } from '@mui/material';
 import AddSection from '../../Components/Section/AddSection';
 import { ToastContainer } from 'react-toastify';
 import UpdateSection from '../../Components/Section/UpdateSection';
+import { getSections } from '../../RTK/Slice/SectionSlice';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const SectionPage = () => {
-
-
 
   // Style For OverFlow 
   const style = {
@@ -42,10 +42,8 @@ const SectionPage = () => {
   const handleUpdateOpen = ()=> setUpdateOpen(true) ; 
   const handleUpdateClose = ()=> setUpdateOpen(false) ; 
 
-  
-
   // For Get Token
-  const token = useSelector(state => state.AuthSlice.auth.token)
+  const token = useSelector(getToken)
 
   // For Dispatch Action 
   const dispatch = useDispatch(); 
@@ -55,8 +53,9 @@ const SectionPage = () => {
     dispatch(getAllSection({token}))
   } , [dispatch])
 
-const {allSection , load } = useSelector(state => state.SectionSlice) ;
+const {allSection , load } = useSelector(getSections) ;
 
+console.log("Section  Page Called")
 
 
   return (

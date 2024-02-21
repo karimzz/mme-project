@@ -3,6 +3,9 @@ import userPic from "./../../Image/user.png"
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { blockUser, unlockUser } from '../../RTK/Slice/UserSlice';
+import Fade from 'react-reveal/Fade';
+
+
 
 const UserComponent = ({  name, email,  location , image , blocked , id}) => {
 
@@ -23,6 +26,7 @@ const UserComponent = ({  name, email,  location , image , blocked , id}) => {
     }
 
   return (
+  <Fade>
     <div className='user-card'>
         <div className='logo'>
             <img src={userPic} loading='lazy' alt='profi' />
@@ -39,6 +43,7 @@ const UserComponent = ({  name, email,  location , image , blocked , id}) => {
 
         </div>
     </div>
+  </Fade>  
   )
 }
 

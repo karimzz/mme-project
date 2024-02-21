@@ -2,20 +2,24 @@ import React, { useEffect } from 'react' ;
 import "./Notification.css" ; 
 import NotificationComponent from '../../Components/Notification/NotificationComponent';
 import user  from "./../../Image/user.png" ; 
-import { Fade } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { getAllNotification } from '../../RTK/Slice/NotificationSlice';
+import {  useSearchParams } from 'react-router-dom';
+import { GetAllNotification, getAllNotification } from '../../RTK/Slice/NotificationSlice';
 import { Skeleton } from '@mui/material';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const NotificationPage = () => {
 
 
-  // For Handlle Route
-  const navigate = useNavigate() 
+  // For Handler Search Params
+  const [searchParams , setSearchParams] = useSearchParams() ; 
+
+  console.log(searchParams.toString()) ; 
+
+
 
   // For Access Token
-  const {token } = useSelector(state => state.AuthSlice.auth) ;
+  const token  = useSelector(getToken) ;
 
   // For Dispatch Action
   const dispatch = useDispatch() ;
@@ -24,7 +28,7 @@ const NotificationPage = () => {
     dispatch(getAllNotification({token}))
   } , [dispatch])
 
-  const {data  , load} = useSelector(state => state.NotificationSlice.allNotification)
+  const {data  , load} = useSelector(GetAllNotification)
 
 
   return (
@@ -35,12 +39,11 @@ const NotificationPage = () => {
 
         {/* For Get All Notification */}
         {
-          data ? data.map((item)=>{
-            return <NotificationComponent username={item.data.user_send} image={user} date={item.created_at} des={item.data.title} /> 
+          data ? data.map((item , idx)=>{
+            return <NotificationComponent key={idx} username={item.data.user_send} image={user} date={item.created_at} des={item.data.title} /> 
             
           }) :load ? <Skeleton  width={500} height={150}/>  : ""
         }
-
 
     </div>
 </div>

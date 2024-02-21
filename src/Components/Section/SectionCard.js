@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCurrent, deleteSection } from '../../RTK/Slice/SectionSlice';
 
-const SectionCard = ({title , id , openModal}) => {
+const SectionCard = memo( ({title , id , openModal}) => {
 
 // For Access Token
 const {token } = useSelector(state => state.AuthSlice.auth) ;
@@ -35,5 +35,7 @@ const addCurrentSection = (item)=>{
     </div>
   )
 }
+
+)
 
 export default SectionCard

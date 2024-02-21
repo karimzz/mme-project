@@ -2,14 +2,15 @@ import React, { useEffect } from 'react'
 import ContactCard from './ContactCard';
 import user from "./../../Image/user.png" ; 
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMessage } from '../../RTK/Slice/MessageSlice';
+import { GetAllMessage, getAllMessage } from '../../RTK/Slice/MessageSlice';
 import { Skeleton } from '@mui/material';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const ChatList = () => {
 
 
 // For Get Token
-const {token } = useSelector(state => state.AuthSlice.auth)
+const token  = useSelector(getToken)
 
 
 // For Dispatch Action
@@ -21,7 +22,7 @@ useEffect(()=>{
 
 
 // For Get Token
-const {data , load} = useSelector(state => state.MessageSlice.allMessage)
+const {data , load} = useSelector(GetAllMessage)
 console.log(data)
 
   return (
