@@ -1,11 +1,12 @@
 import React, { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addCurrent, deleteSection } from '../../RTK/Slice/SectionSlice';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const SectionCard = memo( ({title , id , openModal}) => {
-
+console.log("Section Card Called")
 // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+const token  = useSelector(getToken) ;
 
 // For Dispatch Action
 const dispatch = useDispatch() ; 

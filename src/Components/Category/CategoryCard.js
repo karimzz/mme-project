@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addCurrentCategory, deleteCategory } from '../../RTK/Slice/CategorySlice';
 import { getToken } from '../../RTK/Slice/AuthSlice';
+import { Fade } from 'react-reveal';
 
 const CategoryCard = memo( ({title ,image ,id ,handleUpdateOpen}) => {
 
@@ -29,20 +30,24 @@ const token  = useSelector(getToken) ;
 
   return (
     
-      <div className='category-card'>
-      <div className='image'>
-          <img src={`http://127.0.0.1:8000/uploads/${image}`} alt='pic' loading='lazy' />
-      </div>
-      <div className='info'>
-          <h4>{title}</h4>
-        <ButtonGroup size="small" variant="contained" aria-label="outlined primary button group">
-            <Button color='success'> <Link style={{textDecoration : "none" , color :"white"}} to={`${id}`}>View</Link></Button>
-            <Button onClick={updateHandler} >Update</Button>
-            <Button color='error' onClick={deleteCategoryHandler}>Delete</Button>
-        </ButtonGroup>
+     <Fade>
+      <div>
+        <div className='category-card'>
+        <div className='image'>
+            <img src={`http://127.0.0.1:8000/uploads/${image}`} alt='pic' loading='lazy' />
+        </div>
+        <div className='info'>
+            <h4>{title}</h4>
+          <ButtonGroup size="small" variant="contained" aria-label="outlined primary button group">
+              <Button color='success'> <Link style={{textDecoration : "none" , color :"white"}} to={`${id}`}>View</Link></Button>
+              <Button onClick={updateHandler} >Update</Button>
+              <Button color='error' onClick={deleteCategoryHandler}>Delete</Button>
+          </ButtonGroup>
 
+        </div>
+        </div>
       </div>
-      </div>
+     </Fade>
     
   )
 }

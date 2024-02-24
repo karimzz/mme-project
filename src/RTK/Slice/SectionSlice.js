@@ -84,10 +84,12 @@ const SectionSlice = createSlice({
             console.log("Get All Section Slice Called")
             state.load = false
             state.allSection = action.payload
+            console.log("Section Function in Slice Done Successfully")
             
         } , 
         [getAllSection.pending ] : (state , action)=>{
-            state.load = true
+            state.load = true ;
+            console.log("In Loadding ....") ; 
             
         } ,
         [getAllSection.rejected]  :(state , action)=>{

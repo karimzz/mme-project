@@ -1,0 +1,100 @@
+
+.offer-page{
+padding: 20px 0px 0px 20px;
+height: calc(100vh - 60px);
+overflow-y: scroll;
+}
+
+.offer-page .offer-title{
+    font-size: 40px;
+    margin: 20px 0px 50px;
+}
+
+.offer-page .all-offer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Start Offer Card */
+
+.offer-card{
+    width: 210px;
+    height: 400px;
+    padding: 20px;
+    margin-right: 20px;
+    transition: .3s;
+}
+
+.offer-card:hover{
+    box-shadow: 1px 1px 10px  #EEE;
+    transform: scale(1.05);
+}
+
+.offer-card .image img{
+    width: 170px;
+    object-fit: cover;
+    height: 170px;
+}
+
+.offer-card .info{
+    margin-top: 20px;
+}
+
+.offer-card h4{
+    font-size: 20px;
+}
+
+.offer-card p.details{
+    color: #acaaaa;
+    font-size: 14px;
+}
+
+.offer-card .price{
+    display: flex;
+
+}
+.offer-card .price p {
+    margin-right: 20px;
+}
+
+.offer-card .price p.price-current{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.offer-card .price p.price-before{
+    color: red;
+    font-weight: bold;
+}
+
+.offer-card .available span.ball{
+    width: 10px ;
+    height: 10px;
+    border-radius: 50%;
+    }
+    .offer-card .available .in-stock{
+        display: flex;
+        align-items: center;
+    }
+    .offer-card .available .in-stock span{
+        display: block;
+        background-color:#5cd00f;
+        margin-right: 10px;
+    }
+    
+    .offer-card .available .out-stock{
+        display: flex;
+        align-items: center;
+    }
+    
+    .offer-card .available .out-stock span{
+        display: block;
+        background-color:red;
+        margin-right: 10px;
+    }
+    
+
+/* End Offer Card */
+
+

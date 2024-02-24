@@ -26,7 +26,7 @@ const NotificationPage = () => {
 
   useEffect(()=>{
     dispatch(getAllNotification({token}))
-  } , [dispatch])
+  } , [ token,dispatch])
 
   const {data  , load} = useSelector(GetAllNotification)
 

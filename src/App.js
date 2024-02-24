@@ -7,14 +7,11 @@ import Service from './Components/Sevices/Service';
 import AddService from './Components/Sevices/AddService';
 import EditService from './Components/Sevices/EditService';
 import ChatPage from './Pages/Chat/ChatPage';
-import Offer from './Components/Offer/Offer';
-import AddOffer from './Components/Offer/AddOffer';
-import EditOffer from './Components/Offer/EditOffer';
 import RequestPage from './Pages/Request/RequestPage';
 import RequestProcessList from './Components/Request/RequestProcessList';
 import RequestCanceledList from './Components/Request/RequestCanceledList';
 import RequestRecievedList from './Components/Request/RequestRecievedList';
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import ForgetPasswordSendCode from './Components/ForgetPassword/ForgetPasswordSendCode';
 import VerificationPassword from './Components/ForgetPassword/VerificationPassword';
 import CreateNewPassword from './Components/ForgetPassword/CreateNewPassword';
@@ -25,6 +22,8 @@ import ProductDetails from './Components/Product/ProductDetails';
 import DefaultChat from './Components/Chat/DefaultChat';
 import ConversionComponent from './Components/Chat/ConversionComponent';
 import SharedComponent from './Components/Utility/SharedComponent';
+import OfferPage from './Pages/Offer/OfferPage';
+
 
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
   // For Access Data in state
   const Auth = useSelector(state => state.AuthSlice.auth) ;
 
-
+ 
   return (
     <div>
     <BrowserRouter>
@@ -75,9 +74,7 @@ function App() {
               <Route path='/service/add' element={  Auth  ? <AddService/> : <LoginPage /> }/>
 
               {/*  Offer  */}
-              <Route path='/offer' element={  Auth  ? <Offer /> : <LoginPage />   } />
-              <Route path='/offer/add' element={   Auth  ? <AddOffer /> : <LoginPage /> } />
-              <Route path='/offer/edit' element={  Auth  ? <EditOffer /> : <LoginPage /> } />
+              <Route path='/offer' element={  Auth  ? <OfferPage /> : <LoginPage />   } />
 
               {/* Category  */}
               <Route path='/category' element={ Auth ?  <CategoryPage /> : <LoginPage />} />
@@ -93,6 +90,8 @@ function App() {
                   <Route path="canceled" element={ Auth  ? <RequestCanceledList /> : <LoginPage /> } />
                   <Route path='recieved' element={ Auth  ? <RequestRecievedList /> : <LoginPage /> } />
               </Route>
+
+
 
             </Route>  
 

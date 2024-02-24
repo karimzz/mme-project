@@ -51,7 +51,7 @@ const SectionPage = () => {
   // For Get All Section
   useEffect(()=>{
     dispatch(getAllSection({token}))
-  } , [dispatch])
+  } , [token ,dispatch])
 
 const {allSection , load } = useSelector(getSections) ;
 
@@ -107,9 +107,7 @@ console.log("Section  Page Called")
 
 
         <div className='all-section'>
-        {
-          
-        }
+
           {
             allSection ? allSection.map((item )=>{
               return <SectionCard openModal ={handleUpdateOpen} key={item.id} id={item.id} title={item.title}></SectionCard>
