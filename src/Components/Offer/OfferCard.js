@@ -9,7 +9,6 @@ const OfferCard = ({id , item , prv , curr}) => {
 
     //{coin , available , images  , name , price , rate , details}
 
-    console.log(id) ; 
     // For Access Token
     const token = useSelector(getToken) ; 
 

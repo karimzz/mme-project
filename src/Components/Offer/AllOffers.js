@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import OfferCard from './OfferCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getToken } from '../../RTK/Slice/AuthSlice'
@@ -8,6 +8,9 @@ import { Skeleton } from '@mui/material'
 
 const AllOffers = () => {
 
+    // For Handling UseEffect
+    const handlePerformance = useRef(false) ; 
+
     // For Access token
     const token = useSelector(getToken) ; 
 
@@ -16,8 +19,13 @@ const AllOffers = () => {
 
     // For Get Offers
     useEffect(()=>{
-        dispatch(getAllOfferAPI({token}))
-    } , [dispatch , token])
+        if(!handlePerformance.current){
+        dispatch(getAllOfferAPI({token})) ; 
+        handlePerformance.current = true ; 
+        }
+    } , [token , dispatch])
+
+
 
             // For Access Offer
     const {data , status} = useSelector(getAllOffer) ; 
@@ -25,9 +33,7 @@ const AllOffers = () => {
 
   return (
     <div className='all-offer'>
-          
 
-    
 
         {
             status === 'success' ? data.map((item , idx)=>{

@@ -11,7 +11,6 @@ export const getAllCanceledBooking = createAsyncThunk("booking/getallcancel" , a
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data ;
 })
 
@@ -23,7 +22,6 @@ export const getAllRecivedBooking = createAsyncThunk("booking/getallrecive" , as
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data
 })
 
@@ -35,7 +33,6 @@ export const getAllBooking = createAsyncThunk("booking/getall" , async(args)=>{
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
     return response.data
 })
 

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteCurrentProduct, deleteProduct } from '../../RTK/Slice/ProductSlice';
 import star from "./../../Image/star.png" ;
 import Fade from 'react-reveal/Fade';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 
 const ProductItem = ({id , name , image ,details , price , coin ,available , rate ,category_id}) => {
@@ -22,7 +23,7 @@ const  goToProductDetails = ()=>{
 const dispath = useDispatch() ;
 
 // For Acces Token
-const {token} = useSelector(state => state.AuthSlice.auth); 
+const token = useSelector(getToken); 
 
 // For Delete Item
 const delelteItemHandler = ()=>{

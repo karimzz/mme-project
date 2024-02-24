@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useRef } from 'react'
 import starPic from "./../../Image/star.png"
 import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,6 +12,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import { getAllCategories } from '../../RTK/Slice/CategorySlice'
 import { ToastContainer } from 'react-toastify'
+import { getToken } from '../../RTK/Slice/AuthSlice'
 
 const ProductDetails = () => {
 
@@ -36,7 +37,7 @@ const ProductDetails = () => {
 
 
   // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
+const token  = useSelector(getToken) ;
 
   // For Accese Param
   const {id} = useParams() ;
@@ -44,11 +45,17 @@ const {token } = useSelector(state => state.AuthSlice.auth) ;
   // For Dispatch Action
   const dispatch = useDispatch()
 
+  // For Handle Performance
+  const handlePerformance = useRef(false) ;
+
   // For Get A SPiecific Product 
   useEffect(()=>{
-    dispatch(getSpecifiProduct({token , id}))
-    dispatch(getAllCategories({token})) 
-  } , [dispatch])
+      if(!handlePerformance.current){
+        dispatch(getSpecifiProduct({token , id})) ; 
+        dispatch(getAllCategories({token}))  ;
+        handlePerformance.current = true ; 
+      }
+  } , [id , token])
 
   // For Get data
   const {data , error , load} = useSelector(state => state.ProductSlice.specifiProduct)

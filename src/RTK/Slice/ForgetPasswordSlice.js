@@ -13,7 +13,6 @@ export const restPassword = createAsyncThunk("forgetpassword/restPassword" , asy
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(response.data)
 })
 
 // For Send Email To User

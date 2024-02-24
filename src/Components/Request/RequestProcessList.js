@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import RequestCardType from './RequestCardType'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllBooking } from '../../RTK/Slice/BookingSlice' ;
 import { Skeleton } from '@mui/material';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const RequestProcessList = ( ) => {
 
@@ -10,15 +11,22 @@ const RequestProcessList = ( ) => {
   const dispatch = useDispatch() ;
 
   // For Access Token
-  const {token} = useSelector(state => state.AuthSlice.auth) ;
+  const token = useSelector(getToken) ;
+
+  // For Handle Performance
+  const handlePerformance = useRef(false) ; 
+
+
 
   // For Get All Booking
   useEffect(()=>{
-    dispatch(getAllBooking({token}))
-  },[dispatch])
+    if(!handlePerformance.current){
+      dispatch(getAllBooking({token})) ; 
+      handlePerformance.current = true; 
+    }
+  },[ token, dispatch]);
 
   const {data , load} = useSelector(state => state.BookingSlice.allBooking) ;
-  console.log(data) ; 
 
   return (
     <div className='request-list'>

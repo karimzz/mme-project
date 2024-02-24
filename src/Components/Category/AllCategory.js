@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import CategoryCard from './CategoryCard'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategories, getCatogries } from '../../RTK/Slice/CategorySlice';
@@ -14,6 +14,8 @@ const AllCategory = ({handleUpdateOpen}) => {
 // For Access Token
 const token  = useSelector(getToken) ;
 
+  // For Handle Peformance
+  const handlePerformance = useRef(false ) ; 
 
 
   // For Dispatch Action
@@ -21,13 +23,15 @@ const token  = useSelector(getToken) ;
 
   // For Get All Category
   useEffect(()=>{
-    dispatch(getAllCategories({token }))
-  } , [dispatch])
+    if(!handlePerformance.current) {
+    dispatch(getAllCategories({token })) ; 
+      handlePerformance.current = true ;
+    }
+  } , [ token, dispatch])
 
   // For Acces Category State
   const {data , load} = useSelector(getCatogries) ;
-  console.log(`the Data in All Category component`)
-  console.log(data) ; 
+
 
 
   return (

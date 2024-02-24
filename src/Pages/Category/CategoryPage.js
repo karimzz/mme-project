@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react' ;
+import React, { useEffect, useRef, useState } from 'react' ;
 import "./category.css" ;
 import AllCategory from '../../Components/Category/AllCategory';
 import Button from '@mui/material/Button';
@@ -15,18 +15,22 @@ import UpdateCategory from '../../Components/Category/UpdateCategory';
 
 const CategoryPage = () => {
 
-  // For Access Token
-const {token } = useSelector(state => state.AuthSlice.auth) ;
-
-
-useEffect(()=>{
-  dispatch(getAllSection({token}))
-})
-
 // For Dispatch Action 
 const dispatch = useDispatch() ; 
 
+// For Access Token
+const {token } = useSelector(state => state.AuthSlice.auth) ;
 
+// For Handle Performace 
+const handlePerformance = useRef(false) ; 
+
+
+useEffect(()=>{
+  if(!handlePerformance.current){
+  dispatch(getAllSection({token}))
+    handlePerformance.current = true ; 
+  }
+}, [token , dispatch])
 
 
 // For Add Section
@@ -58,7 +62,6 @@ const style = {
     
 };
 
-console.log("Category Page Called")
 
   return (
     <section className='category-page'>

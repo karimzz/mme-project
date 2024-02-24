@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react' ;
+import React, { useEffect, useRef, useState } from 'react' ;
 import "./section.css"
 import SectionCard from '../../Components/Section/SectionCard';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,14 +48,21 @@ const SectionPage = () => {
   // For Dispatch Action 
   const dispatch = useDispatch(); 
 
+  // For Handle Performance
+  const handlePerformance = useRef(false ) ;
+
+
   // For Get All Section
   useEffect(()=>{
-    dispatch(getAllSection({token}))
+    if(!handlePerformance.current){
+      dispatch(getAllSection({token})) ; 
+      handlePerformance.current = true ;
+    }
   } , [token ,dispatch])
 
 const {allSection , load } = useSelector(getSections) ;
 
-console.log("Section  Page Called")
+
 
 
   return (

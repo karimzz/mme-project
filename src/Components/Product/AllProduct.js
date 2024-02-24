@@ -1,4 +1,4 @@
-import React ,  { useEffect, useState , memo } from 'react'
+import React ,  { useEffect, useState , memo, useRef } from 'react'
 import ProductItem from './ProductItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProduct } from '../../RTK/Slice/ProductSlice';
@@ -31,11 +31,19 @@ const token = useSelector(getToken);
 const [search , setSeach ] =useState("") ; 
 
 
+// For Handle Performance
+const handlePeformance = useRef(false) ; 
+
+
 // For Get All Product
 useEffect(()=>{
-    dispath(getAllProduct({token}))
-    dispath(getAllCategories({token}))
-} , [dispath])
+  if(!handlePeformance.current)
+ {
+  dispath(getAllProduct({token})) ;
+  dispath(getAllCategories({token})) ;
+  handlePeformance.current = true ; 
+ }
+} , [token , dispath])
 
 
 // For Accees Select(Category)
@@ -78,7 +86,6 @@ const clearHandler = ()=>{
   setStock('') ; 
 }
   
-console.log("All Product Component Called ")
 
   return (
     <div>

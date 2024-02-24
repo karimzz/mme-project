@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import RequestCardType from './RequestCardType'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCanceledBooking } from '../../RTK/Slice/BookingSlice';
 import { Skeleton } from '@mui/material';
+import { getToken } from '../../RTK/Slice/AuthSlice';
 
 const RequestCanceledList = () => {
 
@@ -11,15 +12,20 @@ const RequestCanceledList = () => {
     const dispatch = useDispatch() ;
 
     // For Access Token
-    const {token} = useSelector(state => state.AuthSlice.auth) ;
+    const token = useSelector(getToken) ;
   
+    // For Handle Performance 
+    const handlePeformance = useRef(false ) ; 
+
     // For Get All Booking
     useEffect(()=>{
-      dispatch(getAllCanceledBooking({token}))
-    },[dispatch])
+      if(!handlePeformance.current){
+      dispatch(getAllCanceledBooking({token})) ; 
+        handlePeformance.current = true ; 
+      }
+    },[dispatch , token])
   
     const {data , load} = useSelector(state => state.BookingSlice.allBookingCancel) ;
-    console.log(data) ; 
   
 
   return (

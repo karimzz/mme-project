@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react' ;
+import React, { useEffect, useRef } from 'react' ;
 import "./Notification.css" ; 
 import NotificationComponent from '../../Components/Notification/NotificationComponent';
 import user  from "./../../Image/user.png" ; 
@@ -14,8 +14,8 @@ const NotificationPage = () => {
   // For Handler Search Params
   const [searchParams , setSearchParams] = useSearchParams() ; 
 
-  console.log(searchParams.toString()) ; 
-
+  // For Handle Performance
+   const handlePerformance = useRef(false ) ; 
 
 
   // For Access Token
@@ -25,7 +25,11 @@ const NotificationPage = () => {
   const dispatch = useDispatch() ;
 
   useEffect(()=>{
-    dispatch(getAllNotification({token}))
+    if(!handlePerformance.current)
+    {
+      dispatch(getAllNotification({token})) ;
+      handlePerformance.current  = true ; 
+    }
   } , [ token,dispatch])
 
   const {data  , load} = useSelector(GetAllNotification)

@@ -64,7 +64,6 @@ const handleAva = (event)=>{
   setAvailable(event.target.value)
 }
 
-
 // For Avaible Product
 const availbaility = [
   {
@@ -122,8 +121,6 @@ const updateProductHandler = ()=>{
       onChange={handleChange}
 
     >
-
-    
 
       {
         allCategory ?  allCategory.map((item , idx)=>{

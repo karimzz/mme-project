@@ -44,7 +44,6 @@ export const getAllCategories = createAsyncThunk("category/getallcategory" , asy
             Authorization : `Bearer ${args.token}`
         }
     })
-    console.log(`The All Category API Called`)
     return  await response.data
 })
 
@@ -69,7 +68,6 @@ const CategorySlice = createSlice({
     extraReducers :{
         // For Get All Category
         [getAllCategories.fulfilled] : (state , action)=>{
-            console.log("Get All Category Function Called")
             state.allCategory.data = action.payload ; 
             state.allCategory.load = false
         } ,
@@ -79,7 +77,6 @@ const CategorySlice = createSlice({
         [getAllCategories.rejected] : (state , action)=>{
             state.allCategory.load = false
             toast.error("Something has error")
-            console.log("Rejected")
         },
         // For Add Category
         [addCategory.fulfilled] : (state , action)=>{
@@ -91,7 +88,6 @@ const CategorySlice = createSlice({
                 state.allCategory.data = action.payload ;
             }
             toast.success("Category Add Successfullu") ; 
-            console.log("Fulfiled")
         } ,
         [addCategory.pending] : (state ,action)=>{
 

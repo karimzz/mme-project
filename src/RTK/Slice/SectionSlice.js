@@ -15,7 +15,6 @@ export const updateSection = createAsyncThunk('section/updatesection' , async (a
             Authorization : `Bearer ${args.token}` 
         }
     })
-    console.log(response.data)
     return {id:args.id , title:args.title}
 })
 
@@ -36,7 +35,6 @@ export const deleteSection = createAsyncThunk("section/deletesection" , async(ar
 
 // Add Section
 export const addSection = createAsyncThunk("section/addsection" , async(args )=>{
-    console.log(args)
     const response = await axios.post(SECTION_URL , {
         title : args.title 
     } , {
@@ -51,7 +49,6 @@ export const addSection = createAsyncThunk("section/addsection" , async(args )=>
 
 //  For Get All Section 
  export const getAllSection = createAsyncThunk("section/getAllSection" , async (args , thunkAPI)=>{
-    console.log("Get All Section Function Called") ;
     const response = await axios.get(SECTION_URL , {
         headers : {
             Authorization : `Bearer ${args.token}` 
