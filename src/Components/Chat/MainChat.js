@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom'
 
 const MainChat = () => {
   return (
-    <div style={{width : "75%"}}>
+    <div  style={{width : "75%"}}>
         <Outlet context={{message : "Hello From Outlet Context"}} />
     </div>
   )

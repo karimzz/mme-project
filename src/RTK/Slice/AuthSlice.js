@@ -19,18 +19,6 @@ export const loginHandler = createAsyncThunk("auth/loginhandeler" , async (args 
 })
 
 
-// Logout Function 
-export const logoutHandler = createAsyncThunk("auth/logout" , async (args , thunkAPI )=>{
-    const response = await axios.get("http://127.0.0.1:8000/api/logout" , {
-        email : args.email ,
-        headers : {
-            Token : args.Token
-        }
-    }  )
-    console.log(response) ;
-})
-
-
  const initialState = {
     auth : localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : null,
     error : false , 
@@ -42,6 +30,10 @@ const AuthSlice = createSlice({
     name : "auth" , 
     initialState ,
     reducers : {
+        logout : (state)=>{
+            state.auth = null ; 
+            localStorage.removeItem("auth") ;
+        }
 
     } , extraReducers : {
         [loginHandler.fulfilled] : (state , action)=>{
@@ -61,17 +53,8 @@ const AuthSlice = createSlice({
             state.error = true ; 
             state.success = false ; 
             state.loadding = false
-        } ,
-        // Logout
-        [logoutHandler.fulfilled] : (state , action)=>{
-            console.log("Fuilfled")
-        } , 
-        [logoutHandler.pending] : (state , action) =>{
+        } 
 
-        } , 
-        [logoutHandler.rejected] : (state , action) =>{
-            console.log("Rejeceted")
-        }
     }
 })
 
@@ -79,3 +62,5 @@ export default AuthSlice.reducer
 
 
 export const getToken = state => state.AuthSlice.auth.token
+
+export const {logout} = AuthSlice.actions ; 

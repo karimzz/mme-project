@@ -1,21 +1,24 @@
 import React from 'react' ;
 import "./Utility.css"
+import { logout } from '../../RTK/Slice/AuthSlice';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const NavBar = () => {
 
 
+// For Dispatch Action
+const dispatch = useDispatch() ; 
 
-  // // Teest Axios
-  // const getAllSectin = async ()=>{
-  //   const response =await axios.get("http://127.0.0.1:8000/api/section" , {
-  //   headers : {
-  //     Authorization : "Bearer 43|VLI7IItHcMgg2y4RGCrxKw9pFmx2tpZnhcsQtQOEa2fa2df9"
-  //   }
-  // })
-  // console.log(response.data)
-  // }
+// For Change Route 
+const navigate = useNavigate() ; 
 
-  // getAllSectin()
+// For Logout
+const logoutHandler = ()=>{
+dispatch(logout()) ; 
+navigate('/login') ;
+}
+ 
 
   return (
     <nav>
@@ -26,7 +29,7 @@ const NavBar = () => {
         </span>
       </div>
       <div className='btn-container'>
-        <button  style={{padding : "9px 20px"}}>Logout</button>
+        <button onClick={logoutHandler}  style={{padding : "9px 20px"}}>Logout</button>
       </div>
     </nav>
   )

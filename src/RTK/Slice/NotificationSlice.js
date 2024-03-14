@@ -3,13 +3,19 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-export const getAllNotification = createAsyncThunk("notification/getallnotification" , async(args)=>{
-    const response = await axios.get("http://localhost:8000/api/admin/showAllNotification" ,{
+export const getAllNotification = createAsyncThunk("notification/getallnotification" , async(args , thunkAPI)=>{
+    const {rejectWithValue} = thunkAPI
+    try{
+        const response = await axios.get("http://localhost:8000/api/admin/showAllNotification" ,{
         headers : {
             Authorization : `Bearer ${args.token}`
         }
     } )
     return response.data.data
+    }catch(error){
+        console.log(`the error is ${error}`)
+        throw error
+    }
 })
 
 const initialState = {

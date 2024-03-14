@@ -52,14 +52,14 @@ export const getAllProduct = createAsyncThunk("product/getallproduct" , async (a
         }
     })
     return response.data
+    
 })
 
 const initialState = {
     allProduct : null , 
     specifiProduct : {
         data : null , 
-        load : false ,
-        error : false
+        status : 'idle' //  idle || success || rejected || loadding
     }
 }
 
@@ -115,19 +115,15 @@ const ProductSlice = createSlice({
         } ,
         // For Get A Spiceifi Product
         [getSpecifiProduct.fulfilled] : (state , action)=>{
-            console.log("Get Specific Function Called")
             state.specifiProduct.data = action.payload ;
-            state.specifiProduct.load = true
-            state.specifiProduct.error = false
+            state.specifiProduct.status = 'success' ; 
 
         } ,
         [getSpecifiProduct.pending] : (state ,action)=>{
-            state.specifiProduct.error = false
-            state.specifiProduct.load = true;
+            state.specifiProduct.status = 'loadding' ; 
         } ,
         [getSpecifiProduct.rejected] : (state ,action)=>{
-            state.specifiProduct.error = true
-            state.specifiProduct.load = false
+            state.specifiProduct.status = 'rejected' ; 
             
         } ,
         // For Update Producy

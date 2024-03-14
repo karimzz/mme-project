@@ -38,10 +38,10 @@ const token  = useSelector(getToken) ;
         </div>
         <div className='info'>
             <h4>{title}</h4>
-          <ButtonGroup size="small" variant="contained" aria-label="outlined primary button group">
-              <Button color='success'> <Link style={{textDecoration : "none" , color :"white"}} to={`${id}`}>View</Link></Button>
-              <Button onClick={updateHandler} >Update</Button>
-              <Button color='error' onClick={deleteCategoryHandler}>Delete</Button>
+          <ButtonGroup size="small"  variant="contained" aria-label="outlined primary button group">
+              
+              <Button  onClick={updateHandler} >Update</Button>
+              <Button  color='error' onClick={deleteCategoryHandler}>Delete</Button>
           </ButtonGroup>
 
         </div>

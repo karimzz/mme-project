@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef } from 'react'
 import starPic from "./../../Image/star.png"
 import { Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom'
 import { getSpecifiProduct } from '../../RTK/Slice/ProductSlice'
 import EditProduct from './EditeProduct'
 
@@ -15,6 +15,10 @@ import { ToastContainer } from 'react-toastify'
 import { getToken } from '../../RTK/Slice/AuthSlice'
 
 const ProductDetails = () => {
+
+  const location = useLocation() ; 
+  console.log(location) ; 
+  const filterProduct = location.state?.search || "" ; 
 
   // For Handle Overlay
   const style = {
@@ -55,69 +59,81 @@ const token  = useSelector(getToken) ;
         dispatch(getAllCategories({token}))  ;
         handlePerformance.current = true ; 
       }
-  } , [id , token])
+  } , [dispatch ])
 
   // For Get data
-  const {data , error , load} = useSelector(state => state.ProductSlice.specifiProduct)
-  console.log(data) ; 
+  const {data , status} = useSelector(state => state.ProductSlice.specifiProduct)
+
+
 
   return (
-    <div className='product-details'>
-    <ToastContainer />
-      {
-        error ? (
-          <h2 >Product Not Found</h2>
-        ) : ""
-      }
+    <div>
+      <Link style={{textDecoration :"none" ,  color : "black" , margin : "20px" , display: "block"}}  to={`..?${filterProduct}`}><span style={{background : "#e8edff" , borderRadius :"50%" , padding : "7px", paddingLeft : "15px", textAlign : "center"}} className="material-symbols-outlined">
+      arrow_back_ios
+      </span> </Link>
+      <div className='product-details'>
+      <ToastContainer />
+        {/*
+          error ? (
+            <h2 >Product Not Found</h2>
+          ) : ""*/
+        }
 
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        slots={{ backdrop: Backdrop }}
-        slotProps={{
-          backdrop: {
-            timeout: 500,
-          },
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={style}>
-            <EditProduct dataOfProduct={data} handleClose={handleClose} />
-          </Box>
-        </Fade>
-      </Modal>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          slots={{ backdrop: Backdrop }}
+          slotProps={{
+            backdrop: {
+              timeout: 500,
+            },
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              <EditProduct dataOfProduct={data} handleClose={handleClose} />
+            </Box>
+          </Fade>
+        </Modal>
 
-      {
-        data ? (
+        {
+          status === 'loadding' ? 
+          <h2>Loadding</h2> :
+          
+          status === 'success' ? 
           <Fragment>
-          
-          <div className='image'>
-        <img src={`http://127.0.0.1:8000/uploads/${data.images[0]}`} alt='pic' loading='lazy' />
+            
+            <div className='image'>
+          <img src={`http://127.0.0.1:8000/uploads/${data.images[0]}`} alt='pic' loading='lazy' />
+        </div>
+        <div className='details'>
+          <h3> {data.name} </h3>
+          <p className='price'> {data.price} {data.coin}</p>
+          <p className='detail'>
+          {data.details}
+          </p>
+          <div className='rate-con'>
+            <img src={starPic} alt='star' />
+            ( {data.rate} )
+          </div>
+          <div className='available'>
+            {
+            
+            data.available === "true" ?   <div className='in-stock'> <span className='ball'></span> in stock</div> :
+            <div className='out-stock'> <span className='ball'></span> out of stock</div>
+            }
+          </div>
+          <Button variant="contained" onClick={handleOpen} style={{width : "200px" , maxWidth : "100%" , marginTop : "20px"}} className='add-category-btn'>Edite </Button>
+        </div></Fragment> : 
+        
+        status === "rejected" ? <h3>You Are Not Authrothized</h3> : ""
+        }
+
+        
       </div>
-      <div className='details'>
-        <h3> {data.name} </h3>
-        <p className='price'> {data.price} {data.coin}</p>
-        <p className='detail'>
-        {data.details}
-        </p>
-        <div className='rate-con'>
-          <img src={starPic} alt='star' />
-          ( {data.rate} )
-        </div>
-        <div className='available'>
-          {
-          
-          data.available == "true" ?   <div className='in-stock'> <span className='ball'></span> in stock</div> :
-          <div className='out-stock'> <span className='ball'></span> out of stock</div>
-          }
-        </div>
-        <Button variant="contained" onClick={handleOpen} style={{width : "200px" , maxWidth : "100%" , marginTop : "20px"}} className='add-category-btn'>Edite </Button>
-      </div></Fragment>
-        ) : load ? "loadding" : ""
-      }
     </div>
   )
 }

@@ -2,13 +2,10 @@ import React from 'react' ;
 import "./product.css" ; 
 import girlPic from "./../../Image/girl.png" ;
 import AllProduct from '../../Components/Product/AllProduct';
-
-
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-
 import AddProducts from '../../Components/Product/AddProducts';
 
 
@@ -33,12 +30,10 @@ const ProductPage = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  console.log("Product Page Called") ; 
 
   return (
     <section className='product-page'>
-
-
+    
     <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

@@ -214,3 +214,39 @@ nav .btn-container button:hover{
 
 
 /* Form Overlay */
+
+
+
+/* Start Not Found Page  */
+
+.not-found{
+    display: flex;
+    align-items: center;
+    margin-top: 120px;
+    flex-direction: column;
+
+}
+
+.not-found h2{
+    font-size: 50px; 
+
+}
+
+.not-found button{
+    background-color: black;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 13px 24px;
+    margin-top: 20px;
+    transition: .3s;
+}
+
+.not-found button:hover{
+    background-color: rgba(0, 0, 0, 0.858);
+}
+
+
+
+/* End Not Found Page  */

@@ -98,7 +98,7 @@ font-weight: bold;
 .product-secition .product-card  {
     /* margin-right: 30px;
     margin-bottom: 30px; */
-    cursor: pointer;
+    /* cursor: pointer; */
     width: 210px;
     transition: .3s;
     padding: 15px 10px  ;
@@ -137,6 +137,7 @@ align-items: center;
 display: flex;
 align-items: center;
 justify-content: space-between;
+cursor:default;
 }
 
 
@@ -146,6 +147,7 @@ justify-content: space-between;
     color: #acaaaa;
     font-size: 13px;
     font-weight: 500;
+    cursor:default;
     width: 100%;
 }
 
@@ -228,6 +230,8 @@ justify-content: space-between;
 
 .product-details .image img{
     display: block;
+    width: 190px;
+    height: 190px;
 }
 
 

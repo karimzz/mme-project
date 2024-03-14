@@ -35,22 +35,14 @@ const [search , setSeach ] =useState("") ;
 const handlePeformance = useRef(false) ; 
 
 
-// For Get All Product
-useEffect(()=>{
-  if(!handlePeformance.current)
- {
-  dispath(getAllProduct({token})) ;
-  dispath(getAllCategories({token})) ;
-  handlePeformance.current = true ; 
- }
-} , [token , dispath])
+
 
 
 // For Accees Select(Category)
-const [category, setCategory] = React.useState('');
+const [category, setCategory] = React.useState(searchParams.get('name') ? searchParams.get('name') : '');
 
 // For Accees Select (Stock)
-const [stock, setStock] = React.useState('');
+const [stock, setStock] = React.useState(searchParams.get('stock') ?searchParams.get('stock') : '' );
 const stockStatus = [
   {
     state : "in stock" ,
@@ -72,6 +64,18 @@ const handleChange = (event) => {
   // setSearchParams(`?name=${event.target.value}&stock=${stock}`)
   setSearchParams({name : event.target.value , stock : stock})
 };
+
+// For Get All Product
+useEffect(()=>{
+  dispath(getAllProduct({token})) ;
+  if(!handlePeformance.current)
+ {
+  // dispath(getAllProduct({token})) ;
+  dispath(getAllCategories({token})) ;
+  handlePeformance.current = true ; 
+  setSearchParams({name : category , stock })
+ }
+} , [token , dispath ])
 
 // For Access Product 
 const allProducts = useSelector(state => state.ProductSlice.allProduct) ; 
@@ -95,7 +99,7 @@ const clearHandler = ()=>{
     </div>
     
   
-    <div style={{display : "flex" , alignItems : "center"}}>
+    <div style={{display : "flex" , alignItems : "center" , flexWrap : "wrap"}}>
 
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="demo-select-small-label">Category</InputLabel>
